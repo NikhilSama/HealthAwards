@@ -47,8 +47,6 @@ class DiseasesController extends AppController {
 				$this->Session->setFlash(__('The disease could not be saved. Please, try again.'));
 			}
 		}
-		$linkSpecialtiesToDiseases = $this->Disease->LinkSpecialtiesToDisease->find('list');
-		$this->set(compact('linkSpecialtiesToDiseases'));
 	}
 
 /**
@@ -73,8 +71,6 @@ class DiseasesController extends AppController {
 		} else {
 			$this->request->data = $this->Disease->read(null, $id);
 		}
-		$linkSpecialtiesToDiseases = $this->Disease->LinkSpecialtiesToDisease->find('list');
-		$this->set(compact('linkSpecialtiesToDiseases'));
 	}
 
 /**

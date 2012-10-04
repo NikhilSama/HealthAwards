@@ -1,11 +1,11 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * ConsultLocationTypes Controller
+ * Consultlocationtypes Controller
  *
- * @property ConsultLocationType $ConsultLocationType
+ * @property Consultlocationtype $Consultlocationtype
  */
-class ConsultLocationTypesController extends AppController {
+class ConsultlocationtypesController extends AppController {
 
 /**
  * index method
@@ -13,8 +13,8 @@ class ConsultLocationTypesController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->ConsultLocationType->recursive = 0;
-		$this->set('consultLocationTypes', $this->paginate());
+		$this->Consultlocationtype->recursive = 0;
+		$this->set('consultlocationtypes', $this->paginate());
 	}
 
 /**
@@ -25,11 +25,11 @@ class ConsultLocationTypesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		$this->ConsultLocationType->id = $id;
-		if (!$this->ConsultLocationType->exists()) {
-			throw new NotFoundException(__('Invalid consult location type'));
+		$this->Consultlocationtype->id = $id;
+		if (!$this->Consultlocationtype->exists()) {
+			throw new NotFoundException(__('Invalid consultlocationtype'));
 		}
-		$this->set('consultLocationType', $this->ConsultLocationType->read(null, $id));
+		$this->set('consultlocationtype', $this->Consultlocationtype->read(null, $id));
 	}
 
 /**
@@ -39,12 +39,12 @@ class ConsultLocationTypesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->ConsultLocationType->create();
-			if ($this->ConsultLocationType->save($this->request->data)) {
-				$this->Session->setFlash(__('The consult location type has been saved'));
+			$this->Consultlocationtype->create();
+			if ($this->Consultlocationtype->save($this->request->data)) {
+				$this->Session->setFlash(__('The consultlocationtype has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The consult location type could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The consultlocationtype could not be saved. Please, try again.'));
 			}
 		}
 	}
@@ -57,19 +57,19 @@ class ConsultLocationTypesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		$this->ConsultLocationType->id = $id;
-		if (!$this->ConsultLocationType->exists()) {
-			throw new NotFoundException(__('Invalid consult location type'));
+		$this->Consultlocationtype->id = $id;
+		if (!$this->Consultlocationtype->exists()) {
+			throw new NotFoundException(__('Invalid consultlocationtype'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->ConsultLocationType->save($this->request->data)) {
-				$this->Session->setFlash(__('The consult location type has been saved'));
+			if ($this->Consultlocationtype->save($this->request->data)) {
+				$this->Session->setFlash(__('The consultlocationtype has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The consult location type could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The consultlocationtype could not be saved. Please, try again.'));
 			}
 		} else {
-			$this->request->data = $this->ConsultLocationType->read(null, $id);
+			$this->request->data = $this->Consultlocationtype->read(null, $id);
 		}
 	}
 
@@ -85,15 +85,15 @@ class ConsultLocationTypesController extends AppController {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}
-		$this->ConsultLocationType->id = $id;
-		if (!$this->ConsultLocationType->exists()) {
-			throw new NotFoundException(__('Invalid consult location type'));
+		$this->Consultlocationtype->id = $id;
+		if (!$this->Consultlocationtype->exists()) {
+			throw new NotFoundException(__('Invalid consultlocationtype'));
 		}
-		if ($this->ConsultLocationType->delete()) {
-			$this->Session->setFlash(__('Consult location type deleted'));
+		if ($this->Consultlocationtype->delete()) {
+			$this->Session->setFlash(__('Consultlocationtype deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Consult location type was not deleted'));
+		$this->Session->setFlash(__('Consultlocationtype was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

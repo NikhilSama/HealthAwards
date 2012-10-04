@@ -13,7 +13,7 @@
 			<th><?php echo $this->Paginator->sort('start'); ?></th>
 			<th><?php echo $this->Paginator->sort('end'); ?></th>
 			<th><?php echo $this->Paginator->sort('consult_type_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('doctor_consult_location_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('docconsultlocation_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('phone'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -37,7 +37,7 @@
 			<?php echo $this->Html->link($consultTiming['ConsultType']['name'], array('controller' => 'consult_types', 'action' => 'view', $consultTiming['ConsultType']['it'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($consultTiming['DoctorConsultLocation']['id'], array('controller' => 'doctor_consult_locations', 'action' => 'view', $consultTiming['DoctorConsultLocation']['id'])); ?>
+			<?php echo $this->Html->link($consultTiming['Docconsultlocation']['id'], array('controller' => 'docconsultlocations', 'action' => 'view', $consultTiming['Docconsultlocation']['id'])); ?>
 		</td>
 		<td><?php echo h($consultTiming['ConsultTiming']['phone']); ?>&nbsp;</td>
 		<td><?php echo h($consultTiming['ConsultTiming']['email']); ?>&nbsp;</td>
@@ -72,7 +72,7 @@
 		<li><?php echo $this->Html->link(__('New Consult Timing'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Consult Types'), array('controller' => 'consult_types', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Consult Type'), array('controller' => 'consult_types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Doctor Consult Locations'), array('controller' => 'doctor_consult_locations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Doctor Consult Location'), array('controller' => 'doctor_consult_locations', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Docconsultlocations'), array('controller' => 'docconsultlocations', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Docconsultlocation'), array('controller' => 'docconsultlocations', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

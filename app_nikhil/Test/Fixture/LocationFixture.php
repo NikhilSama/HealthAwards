@@ -43,8 +43,8 @@ class LocationFixture extends CakeTestFixture {
 			'city_id' => 1,
 			'country_id' => 1,
 			'pin_code_id' => 1,
-			'created' => '2012-09-30 18:38:34',
-			'modified' => '2012-09-30 18:38:34'
+			'created' => '2012-10-04 08:10:48',
+			'modified' => '2012-10-04 08:10:48'
 		),
 	);
 

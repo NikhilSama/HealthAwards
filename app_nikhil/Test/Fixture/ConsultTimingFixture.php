@@ -22,7 +22,7 @@ class ConsultTimingFixture extends CakeTestFixture {
 		'start' => array('type' => 'time', 'null' => true, 'default' => null),
 		'end' => array('type' => 'time', 'null' => true, 'default' => null),
 		'consult_type_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'key' => 'index'),
-		'doctor_consult_location_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'key' => 'index'),
+		'docconsultlocation_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'key' => 'index'),
 		'phone' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 45, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'email' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 45, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
@@ -30,7 +30,7 @@ class ConsultTimingFixture extends CakeTestFixture {
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
 			'fk_consult_timings_consult_types1_idx' => array('column' => 'consult_type_id', 'unique' => 0),
-			'fk_consult_timings_consult_locations1_idx' => array('column' => 'doctor_consult_location_id', 'unique' => 0)
+			'fk_consult_timings_consult_locations1_idx' => array('column' => 'docconsultlocation_id', 'unique' => 0)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'InnoDB')
 	);
@@ -50,14 +50,14 @@ class ConsultTimingFixture extends CakeTestFixture {
 			'friday' => 1,
 			'saturday' => 1,
 			'sunday' => 1,
-			'start' => '18:38:29',
-			'end' => '18:38:29',
+			'start' => '08:10:37',
+			'end' => '08:10:37',
 			'consult_type_id' => 1,
-			'doctor_consult_location_id' => 1,
+			'docconsultlocation_id' => 1,
 			'phone' => 'Lorem ipsum dolor sit amet',
 			'email' => 'Lorem ipsum dolor sit amet',
-			'created' => '2012-09-30 18:38:29',
-			'modified' => '2012-09-30 18:38:29'
+			'created' => '2012-10-04 08:10:37',
+			'modified' => '2012-10-04 08:10:37'
 		),
 	);
 

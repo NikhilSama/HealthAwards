@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Disease Model
  *
- * @property LinkSpecialtiesTo $LinkSpecialtiesTo
+ * @property Dslink $Dslink
  */
 class Disease extends AppModel {
 
@@ -11,25 +11,23 @@ class Disease extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasAndBelongsToMany associations
+ * hasMany associations
  *
  * @var array
  */
-	public $hasAndBelongsToMany = array(
-		'LinkSpecialtiesToDisease' => array(
-			'className' => 'LinkSpecialtiesToDisease',
-			'joinTable' => 'link_specialties_to_diseases',
+	public $hasMany = array(
+		'Dslink' => array(
+			'className' => 'Dslink',
 			'foreignKey' => 'disease_id',
-			'associationForeignKey' => 'link_specialties_to_id',
-			'unique' => 'keepExisting',
+			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
 			'limit' => '',
 			'offset' => '',
+			'exclusive' => '',
 			'finderQuery' => '',
-			'deleteQuery' => '',
-			'insertQuery' => ''
+			'counterQuery' => ''
 		)
 	);
 

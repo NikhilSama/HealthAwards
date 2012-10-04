@@ -11,6 +11,41 @@
 			<?php echo h($country['Country']['name']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Iso2'); ?></dt>
+		<dd>
+			<?php echo h($country['Country']['iso2']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Long Name'); ?></dt>
+		<dd>
+			<?php echo h($country['Country']['long_name']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Iso3'); ?></dt>
+		<dd>
+			<?php echo h($country['Country']['iso3']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Numcode'); ?></dt>
+		<dd>
+			<?php echo h($country['Country']['numcode']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Un Member'); ?></dt>
+		<dd>
+			<?php echo h($country['Country']['un_member']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Calling Code'); ?></dt>
+		<dd>
+			<?php echo h($country['Country']['calling_code']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Cctld'); ?></dt>
+		<dd>
+			<?php echo h($country['Country']['cctld']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($country['Country']['created']); ?>

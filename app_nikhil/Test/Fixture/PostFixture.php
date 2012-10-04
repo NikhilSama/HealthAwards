@@ -38,8 +38,8 @@ class PostFixture extends CakeTestFixture {
 			'question_id' => 1,
 			'title' => 'Lorem ipsum dolor sit amet',
 			'content' => 'Lorem ipsum dolor sit amet',
-			'created' => '2012-09-30 18:38:37',
-			'modified' => '2012-09-30 18:38:37'
+			'created' => '2012-10-04 08:10:52',
+			'modified' => '2012-10-04 08:10:52'
 		),
 	);
 

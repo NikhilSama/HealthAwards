@@ -35,13 +35,13 @@ class ExperienceFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'from' => '2012-09-30',
+			'from' => '2012-10-04',
 			'to' => 'Lorem ipsum dolor sit amet',
 			'dept' => 'Lorem ipsum dolor sit amet',
 			'doctor_id' => 1,
 			'location_id' => 1,
-			'created' => '2012-09-30 18:38:33',
-			'modified' => '2012-09-30 18:38:33'
+			'created' => '2012-10-04 08:10:47',
+			'modified' => '2012-10-04 08:10:47'
 		),
 	);
 

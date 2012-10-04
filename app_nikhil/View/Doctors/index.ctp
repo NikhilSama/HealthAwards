@@ -7,8 +7,10 @@
 			<th><?php echo $this->Paginator->sort('first_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('middle_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('last_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('phone'); ?></th>
-			<th><?php echo $this->Paginator->sort('email'); ?></th>
+			<th><?php echo $this->Paginator->sort('image'); ?></th>
+			<th><?php echo $this->Paginator->sort('gender'); ?></th>
+			<th><?php echo $this->Paginator->sort('DOB'); ?></th>
+			<th><?php echo $this->Paginator->sort('first_yr_of_practice'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -23,8 +25,10 @@
 		<td><?php echo h($doctor['Doctor']['first_name']); ?>&nbsp;</td>
 		<td><?php echo h($doctor['Doctor']['middle_name']); ?>&nbsp;</td>
 		<td><?php echo h($doctor['Doctor']['last_name']); ?>&nbsp;</td>
-		<td><?php echo h($doctor['Doctor']['phone']); ?>&nbsp;</td>
-		<td><?php echo h($doctor['Doctor']['email']); ?>&nbsp;</td>
+		<td><?php echo h($doctor['Doctor']['image']); ?>&nbsp;</td>
+		<td><?php echo h($doctor['Doctor']['gender']); ?>&nbsp;</td>
+		<td><?php echo h($doctor['Doctor']['DOB']); ?>&nbsp;</td>
+		<td><?php echo h($doctor['Doctor']['first_yr_of_practice']); ?>&nbsp;</td>
 		<td><?php echo h($doctor['Doctor']['created']); ?>&nbsp;</td>
 		<td><?php echo h($doctor['Doctor']['modified']); ?>&nbsp;</td>
 		<td class="actions">
@@ -56,13 +60,15 @@
 		<li><?php echo $this->Html->link(__('New Doctor'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Doctor Consult Locations'), array('controller' => 'doctor_consult_locations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Doctor Consult Location'), array('controller' => 'doctor_consult_locations', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Docconsultlocations'), array('controller' => 'docconsultlocations', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Docconsultlocation'), array('controller' => 'docconsultlocations', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Docspeclinks'), array('controller' => 'docspeclinks', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Docspeclink'), array('controller' => 'docspeclinks', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Doctor Contacts'), array('controller' => 'doctor_contacts', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Doctor Contact'), array('controller' => 'doctor_contacts', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Experiences'), array('controller' => 'experiences', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Experience'), array('controller' => 'experiences', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Qualifications'), array('controller' => 'qualifications', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Qualification'), array('controller' => 'qualifications', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Link Doctors To Specialties'), array('controller' => 'link_doctors_to_specialties', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Link Doctors To Specialty'), array('controller' => 'link_doctors_to_specialties', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -30,8 +30,8 @@ class ConsultTypeFixture extends CakeTestFixture {
 		array(
 			'it' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
-			'created' => '2012-09-30 18:38:29',
-			'modified' => '2012-09-30 18:38:29'
+			'created' => '2012-10-04 08:10:38',
+			'modified' => '2012-10-04 08:10:38'
 		),
 	);
 

@@ -34,8 +34,8 @@ class QuestionFollowerFixture extends CakeTestFixture {
 			'id' => 1,
 			'question_id' => 1,
 			'user_id' => 1,
-			'created' => '2012-09-30 18:38:38',
-			'modified' => '2012-09-30 18:38:38'
+			'created' => '2012-10-04 08:10:54',
+			'modified' => '2012-10-04 08:10:54'
 		),
 	);
 

@@ -14,10 +14,25 @@ class SpecialtyTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.specialty',
-		'app.link_doctors_to',
-		'app.link_doctors_to_specialty',
-		'app.ties_to_disease',
-		'app.link_specialties_to_disease'
+		'app.docspeclink',
+		'app.doctor',
+		'app.user',
+		'app.docconsultlocation',
+		'app.location',
+		'app.city',
+		'app.patient',
+		'app.pin_code',
+		'app.country',
+		'app.experience',
+		'app.qualification',
+		'app.degree',
+		'app.consultlocationtype',
+		'app.consult_timing',
+		'app.consult_type',
+		'app.doctor_contact',
+		'app.dslink',
+		'app.disease',
+		'app.specialtydiseaselinktype'
 	);
 
 /**

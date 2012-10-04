@@ -15,15 +15,16 @@ class DoctorTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.doctor',
 		'app.user',
-		'app.doctor_consult_location',
+		'app.docconsultlocation',
 		'app.location',
-		'app.consult_location_type',
+		'app.consultlocationtype',
 		'app.consult_timing',
 		'app.consult_type',
+		'app.docspeclink',
+		'app.specialty',
+		'app.doctor_contact',
 		'app.experience',
-		'app.qualification',
-		'app.tors_to_specialty',
-		'app.link_doctors_to_specialty'
+		'app.qualification'
 	);
 
 /**

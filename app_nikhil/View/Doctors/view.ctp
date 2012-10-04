@@ -26,14 +26,24 @@
 			<?php echo h($doctor['Doctor']['last_name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Phone'); ?></dt>
+		<dt><?php echo __('Image'); ?></dt>
 		<dd>
-			<?php echo h($doctor['Doctor']['phone']); ?>
+			<?php echo h($doctor['Doctor']['image']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Email'); ?></dt>
+		<dt><?php echo __('Gender'); ?></dt>
 		<dd>
-			<?php echo h($doctor['Doctor']['email']); ?>
+			<?php echo h($doctor['Doctor']['gender']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('DOB'); ?></dt>
+		<dd>
+			<?php echo h($doctor['Doctor']['DOB']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('First Yr Of Practice'); ?></dt>
+		<dd>
+			<?php echo h($doctor['Doctor']['first_yr_of_practice']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
@@ -57,25 +67,27 @@
 		<li><?php echo $this->Html->link(__('New Doctor'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Doctor Consult Locations'), array('controller' => 'doctor_consult_locations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Doctor Consult Location'), array('controller' => 'doctor_consult_locations', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Docconsultlocations'), array('controller' => 'docconsultlocations', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Docconsultlocation'), array('controller' => 'docconsultlocations', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Docspeclinks'), array('controller' => 'docspeclinks', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Docspeclink'), array('controller' => 'docspeclinks', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Doctor Contacts'), array('controller' => 'doctor_contacts', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Doctor Contact'), array('controller' => 'doctor_contacts', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Experiences'), array('controller' => 'experiences', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Experience'), array('controller' => 'experiences', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Qualifications'), array('controller' => 'qualifications', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Qualification'), array('controller' => 'qualifications', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Link Doctors To Specialties'), array('controller' => 'link_doctors_to_specialties', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Link Doctors To Specialty'), array('controller' => 'link_doctors_to_specialties', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
-	<h3><?php echo __('Related Doctor Consult Locations'); ?></h3>
-	<?php if (!empty($doctor['DoctorConsultLocation'])): ?>
+	<h3><?php echo __('Related Docconsultlocations'); ?></h3>
+	<?php if (!empty($doctor['Docconsultlocation'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Location Id'); ?></th>
 		<th><?php echo __('Doctor Id'); ?></th>
-		<th><?php echo __('Consult Location Type Id'); ?></th>
+		<th><?php echo __('Consultlocationtype Id'); ?></th>
 		<th><?php echo __('Addl'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
@@ -83,19 +95,19 @@
 	</tr>
 	<?php
 		$i = 0;
-		foreach ($doctor['DoctorConsultLocation'] as $doctorConsultLocation): ?>
+		foreach ($doctor['Docconsultlocation'] as $docconsultlocation): ?>
 		<tr>
-			<td><?php echo $doctorConsultLocation['id']; ?></td>
-			<td><?php echo $doctorConsultLocation['location_id']; ?></td>
-			<td><?php echo $doctorConsultLocation['doctor_id']; ?></td>
-			<td><?php echo $doctorConsultLocation['consult_location_type_id']; ?></td>
-			<td><?php echo $doctorConsultLocation['addl']; ?></td>
-			<td><?php echo $doctorConsultLocation['created']; ?></td>
-			<td><?php echo $doctorConsultLocation['modified']; ?></td>
+			<td><?php echo $docconsultlocation['id']; ?></td>
+			<td><?php echo $docconsultlocation['location_id']; ?></td>
+			<td><?php echo $docconsultlocation['doctor_id']; ?></td>
+			<td><?php echo $docconsultlocation['consultlocationtype_id']; ?></td>
+			<td><?php echo $docconsultlocation['addl']; ?></td>
+			<td><?php echo $docconsultlocation['created']; ?></td>
+			<td><?php echo $docconsultlocation['modified']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'doctor_consult_locations', 'action' => 'view', $doctorConsultLocation['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'doctor_consult_locations', 'action' => 'edit', $doctorConsultLocation['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'doctor_consult_locations', 'action' => 'delete', $doctorConsultLocation['id']), null, __('Are you sure you want to delete # %s?', $doctorConsultLocation['id'])); ?>
+				<?php echo $this->Html->link(__('View'), array('controller' => 'docconsultlocations', 'action' => 'view', $docconsultlocation['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'docconsultlocations', 'action' => 'edit', $docconsultlocation['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'docconsultlocations', 'action' => 'delete', $docconsultlocation['id']), null, __('Are you sure you want to delete # %s?', $docconsultlocation['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -104,7 +116,83 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Doctor Consult Location'), array('controller' => 'doctor_consult_locations', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Docconsultlocation'), array('controller' => 'docconsultlocations', 'action' => 'add')); ?> </li>
+		</ul>
+	</div>
+</div>
+<div class="related">
+	<h3><?php echo __('Related Docspeclinks'); ?></h3>
+	<?php if (!empty($doctor['Docspeclink'])): ?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Doctor Id'); ?></th>
+		<th><?php echo __('Specialty Id'); ?></th>
+		<th><?php echo __('Created'); ?></th>
+		<th><?php echo __('Modified'); ?></th>
+		<th class="actions"><?php echo __('Actions'); ?></th>
+	</tr>
+	<?php
+		$i = 0;
+		foreach ($doctor['Docspeclink'] as $docspeclink): ?>
+		<tr>
+			<td><?php echo $docspeclink['id']; ?></td>
+			<td><?php echo $docspeclink['doctor_id']; ?></td>
+			<td><?php echo $docspeclink['specialty_id']; ?></td>
+			<td><?php echo $docspeclink['created']; ?></td>
+			<td><?php echo $docspeclink['modified']; ?></td>
+			<td class="actions">
+				<?php echo $this->Html->link(__('View'), array('controller' => 'docspeclinks', 'action' => 'view', $docspeclink['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'docspeclinks', 'action' => 'edit', $docspeclink['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'docspeclinks', 'action' => 'delete', $docspeclink['id']), null, __('Are you sure you want to delete # %s?', $docspeclink['id'])); ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+
+	<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Docspeclink'), array('controller' => 'docspeclinks', 'action' => 'add')); ?> </li>
+		</ul>
+	</div>
+</div>
+<div class="related">
+	<h3><?php echo __('Related Doctor Contacts'); ?></h3>
+	<?php if (!empty($doctor['DoctorContact'])): ?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Doctor Id'); ?></th>
+		<th><?php echo __('Phone'); ?></th>
+		<th><?php echo __('Email'); ?></th>
+		<th><?php echo __('Created'); ?></th>
+		<th><?php echo __('Modified'); ?></th>
+		<th class="actions"><?php echo __('Actions'); ?></th>
+	</tr>
+	<?php
+		$i = 0;
+		foreach ($doctor['DoctorContact'] as $doctorContact): ?>
+		<tr>
+			<td><?php echo $doctorContact['id']; ?></td>
+			<td><?php echo $doctorContact['doctor_id']; ?></td>
+			<td><?php echo $doctorContact['phone']; ?></td>
+			<td><?php echo $doctorContact['email']; ?></td>
+			<td><?php echo $doctorContact['created']; ?></td>
+			<td><?php echo $doctorContact['modified']; ?></td>
+			<td class="actions">
+				<?php echo $this->Html->link(__('View'), array('controller' => 'doctor_contacts', 'action' => 'view', $doctorContact['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'doctor_contacts', 'action' => 'edit', $doctorContact['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'doctor_contacts', 'action' => 'delete', $doctorContact['id']), null, __('Are you sure you want to delete # %s?', $doctorContact['id'])); ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+
+	<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Doctor Contact'), array('controller' => 'doctor_contacts', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>
@@ -191,43 +279,6 @@
 	<div class="actions">
 		<ul>
 			<li><?php echo $this->Html->link(__('New Qualification'), array('controller' => 'qualifications', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Link Doctors To Specialties'); ?></h3>
-	<?php if (!empty($doctor['LinkDoctorsToSpecialty'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Doctor Id'); ?></th>
-		<th><?php echo __('Specialty Id'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($doctor['LinkDoctorsToSpecialty'] as $linkDoctorsToSpecialty): ?>
-		<tr>
-			<td><?php echo $linkDoctorsToSpecialty['id']; ?></td>
-			<td><?php echo $linkDoctorsToSpecialty['doctor_id']; ?></td>
-			<td><?php echo $linkDoctorsToSpecialty['specialty_id']; ?></td>
-			<td><?php echo $linkDoctorsToSpecialty['created']; ?></td>
-			<td><?php echo $linkDoctorsToSpecialty['modified']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'link_doctors_to_specialties', 'action' => 'view', $linkDoctorsToSpecialty['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'link_doctors_to_specialties', 'action' => 'edit', $linkDoctorsToSpecialty['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'link_doctors_to_specialties', 'action' => 'delete', $linkDoctorsToSpecialty['id']), null, __('Are you sure you want to delete # %s?', $linkDoctorsToSpecialty['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Link Doctors To Specialty'), array('controller' => 'link_doctors_to_specialties', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>

@@ -4,6 +4,13 @@
 		<legend><?php echo __('Add Country'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
+		echo $this->Form->input('iso2');
+		echo $this->Form->input('long_name');
+		echo $this->Form->input('iso3');
+		echo $this->Form->input('numcode');
+		echo $this->Form->input('un_member');
+		echo $this->Form->input('calling_code');
+		echo $this->Form->input('cctld');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

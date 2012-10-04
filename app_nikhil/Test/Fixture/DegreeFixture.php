@@ -30,8 +30,8 @@ class DegreeFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
-			'created' => '2012-09-30 18:38:30',
-			'modified' => '2012-09-30 18:38:30'
+			'created' => '2012-10-04 08:10:41',
+			'modified' => '2012-10-04 08:10:41'
 		),
 	);
 

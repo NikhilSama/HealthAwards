@@ -4,10 +4,11 @@ App::uses('AppModel', 'Model');
  * Doctor Model
  *
  * @property User $User
- * @property DoctorConsultLocation $DoctorConsultLocation
+ * @property Docconsultlocation $Docconsultlocation
+ * @property Docspeclink $Docspeclink
+ * @property DoctorContact $DoctorContact
  * @property Experience $Experience
  * @property Qualification $Qualification
- * @property TorsToSpecialty $TorsToSpecialty
  */
 class Doctor extends AppModel {
 
@@ -52,8 +53,34 @@ class Doctor extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'DoctorConsultLocation' => array(
-			'className' => 'DoctorConsultLocation',
+		'Docconsultlocation' => array(
+			'className' => 'Docconsultlocation',
+			'foreignKey' => 'doctor_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Docspeclink' => array(
+			'className' => 'Docspeclink',
+			'foreignKey' => 'doctor_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'DoctorContact' => array(
+			'className' => 'DoctorContact',
 			'foreignKey' => 'doctor_id',
 			'dependent' => false,
 			'conditions' => '',
@@ -90,21 +117,7 @@ class Doctor extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		),
-                'LinkDoctorsToSpecialty' => array(
-                        'className' => 'LinkDoctorsToSpecialty',
-                        'foreignKey' => 'doctor_id',
-                        'dependent' => false,
-                        'conditions' => '',
-                        'fields' => '',
-                        'order' => '',
-                        'limit' => '',
-                        'offset' => '',
-                        'exclusive' => '',
-                        'finderQuery' => '',
-                        'counterQuery' => ''
-                )
-
+		)
 	);
 
 }

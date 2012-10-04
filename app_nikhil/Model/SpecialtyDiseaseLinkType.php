@@ -1,11 +1,11 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * SpecialtyDiseaseLinkType Model
+ * Specialtydiseaselinktype Model
  *
- * @property LinkSpecialtiesToDisease $LinkSpecialtiesToDisease
+ * @property Dslink $Dslink
  */
-class SpecialtyDiseaseLinkType extends AppModel {
+class Specialtydiseaselinktype extends AppModel {
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -16,9 +16,9 @@ class SpecialtyDiseaseLinkType extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'LinkSpecialtiesToDisease' => array(
-			'className' => 'LinkSpecialtiesToDisease',
-			'foreignKey' => 'specialty_disease_link_type_id',
+		'Dslink' => array(
+			'className' => 'Dslink',
+			'foreignKey' => 'specialtydiseaselinktype_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

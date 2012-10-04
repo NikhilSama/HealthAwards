@@ -40,13 +40,13 @@ class AppointmentFixture extends CakeTestFixture {
 			'user_id' => 1,
 			'subject' => 'Lorem ipsum dolor sit amet',
 			'location' => 'Lorem ipsum dolor sit amet',
-			'start' => '2012-09-30 18:38:27',
-			'end' => '2012-09-30 18:38:27',
+			'start' => '2012-10-04 08:10:35',
+			'end' => '2012-10-04 08:10:35',
 			'is_all_day' => 1,
 			'color' => 'Lorem ipsum dolor sit amet',
 			'recuring_rule' => 'Lorem ipsum dolor sit amet',
-			'created' => '2012-09-30 18:38:27',
-			'modified' => '2012-09-30 18:38:27'
+			'created' => '2012-10-04 08:10:35',
+			'modified' => '2012-10-04 08:10:35'
 		),
 	);
 

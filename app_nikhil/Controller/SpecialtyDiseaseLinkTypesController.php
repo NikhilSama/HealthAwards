@@ -1,11 +1,11 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * SpecialtyDiseaseLinkTypes Controller
+ * Specialtydiseaselinktypes Controller
  *
- * @property SpecialtyDiseaseLinkType $SpecialtyDiseaseLinkType
+ * @property Specialtydiseaselinktype $Specialtydiseaselinktype
  */
-class SpecialtyDiseaseLinkTypesController extends AppController {
+class SpecialtydiseaselinktypesController extends AppController {
 
 /**
  * index method
@@ -13,8 +13,8 @@ class SpecialtyDiseaseLinkTypesController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->SpecialtyDiseaseLinkType->recursive = 0;
-		$this->set('specialtyDiseaseLinkTypes', $this->paginate());
+		$this->Specialtydiseaselinktype->recursive = 0;
+		$this->set('specialtydiseaselinktypes', $this->paginate());
 	}
 
 /**
@@ -25,11 +25,11 @@ class SpecialtyDiseaseLinkTypesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		$this->SpecialtyDiseaseLinkType->id = $id;
-		if (!$this->SpecialtyDiseaseLinkType->exists()) {
-			throw new NotFoundException(__('Invalid specialty disease link type'));
+		$this->Specialtydiseaselinktype->id = $id;
+		if (!$this->Specialtydiseaselinktype->exists()) {
+			throw new NotFoundException(__('Invalid specialtydiseaselinktype'));
 		}
-		$this->set('specialtyDiseaseLinkType', $this->SpecialtyDiseaseLinkType->read(null, $id));
+		$this->set('specialtydiseaselinktype', $this->Specialtydiseaselinktype->read(null, $id));
 	}
 
 /**
@@ -39,12 +39,12 @@ class SpecialtyDiseaseLinkTypesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->SpecialtyDiseaseLinkType->create();
-			if ($this->SpecialtyDiseaseLinkType->save($this->request->data)) {
-				$this->Session->setFlash(__('The specialty disease link type has been saved'));
+			$this->Specialtydiseaselinktype->create();
+			if ($this->Specialtydiseaselinktype->save($this->request->data)) {
+				$this->Session->setFlash(__('The specialtydiseaselinktype has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The specialty disease link type could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The specialtydiseaselinktype could not be saved. Please, try again.'));
 			}
 		}
 	}
@@ -57,19 +57,19 @@ class SpecialtyDiseaseLinkTypesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		$this->SpecialtyDiseaseLinkType->id = $id;
-		if (!$this->SpecialtyDiseaseLinkType->exists()) {
-			throw new NotFoundException(__('Invalid specialty disease link type'));
+		$this->Specialtydiseaselinktype->id = $id;
+		if (!$this->Specialtydiseaselinktype->exists()) {
+			throw new NotFoundException(__('Invalid specialtydiseaselinktype'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->SpecialtyDiseaseLinkType->save($this->request->data)) {
-				$this->Session->setFlash(__('The specialty disease link type has been saved'));
+			if ($this->Specialtydiseaselinktype->save($this->request->data)) {
+				$this->Session->setFlash(__('The specialtydiseaselinktype has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The specialty disease link type could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The specialtydiseaselinktype could not be saved. Please, try again.'));
 			}
 		} else {
-			$this->request->data = $this->SpecialtyDiseaseLinkType->read(null, $id);
+			$this->request->data = $this->Specialtydiseaselinktype->read(null, $id);
 		}
 	}
 
@@ -85,15 +85,15 @@ class SpecialtyDiseaseLinkTypesController extends AppController {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}
-		$this->SpecialtyDiseaseLinkType->id = $id;
-		if (!$this->SpecialtyDiseaseLinkType->exists()) {
-			throw new NotFoundException(__('Invalid specialty disease link type'));
+		$this->Specialtydiseaselinktype->id = $id;
+		if (!$this->Specialtydiseaselinktype->exists()) {
+			throw new NotFoundException(__('Invalid specialtydiseaselinktype'));
 		}
-		if ($this->SpecialtyDiseaseLinkType->delete()) {
-			$this->Session->setFlash(__('Specialty disease link type deleted'));
+		if ($this->Specialtydiseaselinktype->delete()) {
+			$this->Session->setFlash(__('Specialtydiseaselinktype deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Specialty disease link type was not deleted'));
+		$this->Session->setFlash(__('Specialtydiseaselinktype was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

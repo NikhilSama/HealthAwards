@@ -1,9 +1,9 @@
 <?php
 /**
- * SpecialtyDiseaseLinkTypeFixture
+ * SpecialtydiseaselinktypeFixture
  *
  */
-class SpecialtyDiseaseLinkTypeFixture extends CakeTestFixture {
+class SpecialtydiseaselinktypeFixture extends CakeTestFixture {
 
 /**
  * Fields
@@ -30,8 +30,8 @@ class SpecialtyDiseaseLinkTypeFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
-			'created' => '2012-09-30 18:38:40',
-			'modified' => '2012-09-30 18:38:40'
+			'created' => '2012-10-04 08:10:56',
+			'modified' => '2012-10-04 08:10:56'
 		),
 	);
 

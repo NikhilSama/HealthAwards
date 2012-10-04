@@ -1,24 +1,24 @@
-<div class="specialtyDiseaseLinkTypes view">
-<h2><?php  echo __('Specialty Disease Link Type'); ?></h2>
+<div class="specialtydiseaselinktypes view">
+<h2><?php  echo __('Specialtydiseaselinktype'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
-			<?php echo h($specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['id']); ?>
+			<?php echo h($specialtydiseaselinktype['Specialtydiseaselinktype']['id']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
-			<?php echo h($specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['name']); ?>
+			<?php echo h($specialtydiseaselinktype['Specialtydiseaselinktype']['name']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
-			<?php echo h($specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['created']); ?>
+			<?php echo h($specialtydiseaselinktype['Specialtydiseaselinktype']['created']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Modified'); ?></dt>
 		<dd>
-			<?php echo h($specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['modified']); ?>
+			<?php echo h($specialtydiseaselinktype['Specialtydiseaselinktype']['modified']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -26,41 +26,41 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Specialty Disease Link Type'), array('action' => 'edit', $specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Specialty Disease Link Type'), array('action' => 'delete', $specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['id']), null, __('Are you sure you want to delete # %s?', $specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Specialty Disease Link Types'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Specialty Disease Link Type'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Link Specialties To Diseases'), array('controller' => 'link_specialties_to_diseases', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Link Specialties To Disease'), array('controller' => 'link_specialties_to_diseases', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Specialtydiseaselinktype'), array('action' => 'edit', $specialtydiseaselinktype['Specialtydiseaselinktype']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Delete Specialtydiseaselinktype'), array('action' => 'delete', $specialtydiseaselinktype['Specialtydiseaselinktype']['id']), null, __('Are you sure you want to delete # %s?', $specialtydiseaselinktype['Specialtydiseaselinktype']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Specialtydiseaselinktypes'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Specialtydiseaselinktype'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Dslinks'), array('controller' => 'dslinks', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Dslink'), array('controller' => 'dslinks', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
-	<h3><?php echo __('Related Link Specialties To Diseases'); ?></h3>
-	<?php if (!empty($specialtyDiseaseLinkType['LinkSpecialtiesToDisease'])): ?>
+	<h3><?php echo __('Related Dslinks'); ?></h3>
+	<?php if (!empty($specialtydiseaselinktype['Dslink'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Specialty Id'); ?></th>
 		<th><?php echo __('Disease Id'); ?></th>
-		<th><?php echo __('Specialty Disease Link Type Id'); ?></th>
+		<th><?php echo __('Specialtydiseaselinktype Id'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
 		$i = 0;
-		foreach ($specialtyDiseaseLinkType['LinkSpecialtiesToDisease'] as $linkSpecialtiesToDisease): ?>
+		foreach ($specialtydiseaselinktype['Dslink'] as $dslink): ?>
 		<tr>
-			<td><?php echo $linkSpecialtiesToDisease['id']; ?></td>
-			<td><?php echo $linkSpecialtiesToDisease['specialty_id']; ?></td>
-			<td><?php echo $linkSpecialtiesToDisease['disease_id']; ?></td>
-			<td><?php echo $linkSpecialtiesToDisease['specialty_disease_link_type_id']; ?></td>
-			<td><?php echo $linkSpecialtiesToDisease['created']; ?></td>
-			<td><?php echo $linkSpecialtiesToDisease['modified']; ?></td>
+			<td><?php echo $dslink['id']; ?></td>
+			<td><?php echo $dslink['specialty_id']; ?></td>
+			<td><?php echo $dslink['disease_id']; ?></td>
+			<td><?php echo $dslink['specialtydiseaselinktype_id']; ?></td>
+			<td><?php echo $dslink['created']; ?></td>
+			<td><?php echo $dslink['modified']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'link_specialties_to_diseases', 'action' => 'view', $linkSpecialtiesToDisease['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'link_specialties_to_diseases', 'action' => 'edit', $linkSpecialtiesToDisease['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'link_specialties_to_diseases', 'action' => 'delete', $linkSpecialtiesToDisease['id']), null, __('Are you sure you want to delete # %s?', $linkSpecialtiesToDisease['id'])); ?>
+				<?php echo $this->Html->link(__('View'), array('controller' => 'dslinks', 'action' => 'view', $dslink['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'dslinks', 'action' => 'edit', $dslink['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'dslinks', 'action' => 'delete', $dslink['id']), null, __('Are you sure you want to delete # %s?', $dslink['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -69,7 +69,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Link Specialties To Disease'), array('controller' => 'link_specialties_to_diseases', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Dslink'), array('controller' => 'dslinks', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>

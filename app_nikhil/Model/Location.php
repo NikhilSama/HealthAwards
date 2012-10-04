@@ -6,9 +6,9 @@ App::uses('AppModel', 'Model');
  * @property City $City
  * @property Country $Country
  * @property PinCode $PinCode
+ * @property Docconsultlocation $Docconsultlocation
  * @property Experience $Experience
  * @property Qualification $Qualification
- * @property DoctorConsult $DoctorConsult
  */
 class Location extends AppModel {
 
@@ -87,6 +87,19 @@ class Location extends AppModel {
  * @var array
  */
 	public $hasMany = array(
+		'Docconsultlocation' => array(
+			'className' => 'Docconsultlocation',
+			'foreignKey' => 'location_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'Experience' => array(
 			'className' => 'Experience',
 			'foreignKey' => 'location_id',
@@ -112,23 +125,7 @@ class Location extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		),
-                'DoctorConsultLocation' => array(
-                        'className' => 'DoctorConsultLocation',
-                        'foreignKey' => 'location_id',
-                        'dependent' => false,
-                        'conditions' => '',
-                        'fields' => '',
-                        'order' => '',
-                        'limit' => '',
-                        'offset' => '',
-                        'exclusive' => '',
-                        'finderQuery' => '',
-                        'counterQuery' => ''
-                )
-
+		)
 	);
-
-
 
 }

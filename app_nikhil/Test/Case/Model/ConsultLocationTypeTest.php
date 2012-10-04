@@ -1,11 +1,11 @@
 <?php
-App::uses('ConsultLocationType', 'Model');
+App::uses('Consultlocationtype', 'Model');
 
 /**
- * ConsultLocationType Test Case
+ * Consultlocationtype Test Case
  *
  */
-class ConsultLocationTypeTest extends CakeTestCase {
+class ConsultlocationtypeTest extends CakeTestCase {
 
 /**
  * Fixtures
@@ -13,8 +13,8 @@ class ConsultLocationTypeTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.consult_location_type',
-		'app.doctor_consult_location'
+		'app.consultlocationtype',
+		'app.docconsultlocation'
 	);
 
 /**
@@ -24,7 +24,7 @@ class ConsultLocationTypeTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->ConsultLocationType = ClassRegistry::init('ConsultLocationType');
+		$this->Consultlocationtype = ClassRegistry::init('Consultlocationtype');
 	}
 
 /**
@@ -33,7 +33,7 @@ class ConsultLocationTypeTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		unset($this->ConsultLocationType);
+		unset($this->Consultlocationtype);
 
 		parent::tearDown();
 	}

@@ -1,11 +1,11 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * ConsultLocationType Model
+ * Consultlocationtype Model
  *
- * @property DoctorConsultLocation $DoctorConsultLocation
+ * @property Docconsultlocation $Docconsultlocation
  */
-class ConsultLocationType extends AppModel {
+class Consultlocationtype extends AppModel {
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -16,9 +16,9 @@ class ConsultLocationType extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'DoctorConsultLocation' => array(
-			'className' => 'DoctorConsultLocation',
-			'foreignKey' => 'consult_location_type_id',
+		'Docconsultlocation' => array(
+			'className' => 'Docconsultlocation',
+			'foreignKey' => 'consultlocationtype_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

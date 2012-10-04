@@ -30,8 +30,8 @@ class DiseaseFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
-			'created' => '2012-09-30 18:38:31',
-			'modified' => '2012-09-30 18:38:31'
+			'created' => '2012-10-04 08:10:42',
+			'modified' => '2012-10-04 08:10:42'
 		),
 	);
 

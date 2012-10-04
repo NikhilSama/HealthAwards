@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
  * ConsultTiming Model
  *
  * @property ConsultType $ConsultType
- * @property DoctorConsultLocation $DoctorConsultLocation
+ * @property Docconsultlocation $Docconsultlocation
  */
 class ConsultTiming extends AppModel {
 
@@ -24,7 +24,7 @@ class ConsultTiming extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'doctor_consult_location_id' => array(
+		'docconsultlocation_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -51,9 +51,9 @@ class ConsultTiming extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'DoctorConsultLocation' => array(
-			'className' => 'DoctorConsultLocation',
-			'foreignKey' => 'doctor_consult_location_id',
+		'Docconsultlocation' => array(
+			'className' => 'Docconsultlocation',
+			'foreignKey' => 'docconsultlocation_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

@@ -30,8 +30,8 @@ class PinCodeFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'pin_code' => 'Lorem ip',
-			'created' => '2012-09-30 18:38:36',
-			'modified' => '2012-09-30 18:38:36'
+			'created' => '2012-10-04 08:10:50',
+			'modified' => '2012-10-04 08:10:50'
 		),
 	);
 

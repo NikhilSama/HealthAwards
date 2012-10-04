@@ -41,8 +41,8 @@ class QualificationFixture extends CakeTestFixture {
 			'location_id' => 1,
 			'year' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'dept' => 'Lorem ipsum dolor sit amet',
-			'created' => '2012-09-30 18:38:38',
-			'modified' => '2012-09-30 18:38:38'
+			'created' => '2012-10-04 08:10:53',
+			'modified' => '2012-10-04 08:10:53'
 		),
 	);
 

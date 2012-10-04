@@ -100,4 +100,9 @@ class DoctorsController extends AppController {
 		$this->Session->setFlash(__('Doctor was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	public function add_profile() {
+		$docconsultlocations = $this->Doctor->Docconsultlocation->Location->find('all');
+		$this->set(compact('docconsultlocations'));		
+	}
 }

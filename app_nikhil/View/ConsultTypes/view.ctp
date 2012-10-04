@@ -50,7 +50,7 @@
 		<th><?php echo __('Start'); ?></th>
 		<th><?php echo __('End'); ?></th>
 		<th><?php echo __('Consult Type Id'); ?></th>
-		<th><?php echo __('Doctor Consult Location Id'); ?></th>
+		<th><?php echo __('Docconsultlocation Id'); ?></th>
 		<th><?php echo __('Phone'); ?></th>
 		<th><?php echo __('Email'); ?></th>
 		<th><?php echo __('Created'); ?></th>
@@ -72,7 +72,7 @@
 			<td><?php echo $consultTiming['start']; ?></td>
 			<td><?php echo $consultTiming['end']; ?></td>
 			<td><?php echo $consultTiming['consult_type_id']; ?></td>
-			<td><?php echo $consultTiming['doctor_consult_location_id']; ?></td>
+			<td><?php echo $consultTiming['docconsultlocation_id']; ?></td>
 			<td><?php echo $consultTiming['phone']; ?></td>
 			<td><?php echo $consultTiming['email']; ?></td>
 			<td><?php echo $consultTiming['created']; ?></td>

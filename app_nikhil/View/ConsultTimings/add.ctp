@@ -13,7 +13,7 @@
 		echo $this->Form->input('start');
 		echo $this->Form->input('end');
 		echo $this->Form->input('consult_type_id');
-		echo $this->Form->input('doctor_consult_location_id');
+		echo $this->Form->input('docconsultlocation_id');
 		echo $this->Form->input('phone');
 		echo $this->Form->input('email');
 	?>
@@ -27,7 +27,7 @@
 		<li><?php echo $this->Html->link(__('List Consult Timings'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Consult Types'), array('controller' => 'consult_types', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Consult Type'), array('controller' => 'consult_types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Doctor Consult Locations'), array('controller' => 'doctor_consult_locations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Doctor Consult Location'), array('controller' => 'doctor_consult_locations', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Docconsultlocations'), array('controller' => 'docconsultlocations', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Docconsultlocation'), array('controller' => 'docconsultlocations', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

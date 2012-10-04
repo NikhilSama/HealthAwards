@@ -50,8 +50,8 @@ class PatientFixture extends CakeTestFixture {
 			'city_id' => 1,
 			'pin_code_id' => 1,
 			'country_id' => 1,
-			'created' => '2012-09-30 18:38:35',
-			'modified' => '2012-09-30 18:38:35'
+			'created' => '2012-10-04 08:10:49',
+			'modified' => '2012-10-04 08:10:49'
 		),
 	);
 

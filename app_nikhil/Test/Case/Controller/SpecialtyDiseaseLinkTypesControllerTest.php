@@ -1,11 +1,11 @@
 <?php
-App::uses('SpecialtyDiseaseLinkTypesController', 'Controller');
+App::uses('SpecialtydiseaselinktypesController', 'Controller');
 
 /**
- * SpecialtyDiseaseLinkTypesController Test Case
+ * SpecialtydiseaselinktypesController Test Case
  *
  */
-class SpecialtyDiseaseLinkTypesControllerTest extends ControllerTestCase {
+class SpecialtydiseaselinktypesControllerTest extends ControllerTestCase {
 
 /**
  * Fixtures
@@ -13,10 +13,10 @@ class SpecialtyDiseaseLinkTypesControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.specialty_disease_link_type',
-		'app.link_specialties_to_disease',
+		'app.specialtydiseaselinktype',
+		'app.dslink',
 		'app.specialty',
-		'app.link_doctors_to_specialty',
+		'app.docspeclink',
 		'app.doctor',
 		'app.user',
 		'app.appointment',
@@ -25,17 +25,18 @@ class SpecialtyDiseaseLinkTypesControllerTest extends ControllerTestCase {
 		'app.location',
 		'app.country',
 		'app.pin_code',
+		'app.docconsultlocation',
+		'app.consultlocationtype',
+		'app.consult_timing',
+		'app.consult_type',
 		'app.experience',
 		'app.qualification',
 		'app.degree',
-		'app.doctor_consult_location',
-		'app.consult_location_type',
-		'app.consult_timing',
-		'app.consult_type',
 		'app.post_feedback',
 		'app.post',
 		'app.question',
 		'app.question_follower',
+		'app.doctor_contact',
 		'app.disease'
 	);
 

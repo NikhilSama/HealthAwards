@@ -1,9 +1,9 @@
 <?php
 /**
- * ConsultLocationTypeFixture
+ * ConsultlocationtypeFixture
  *
  */
-class ConsultLocationTypeFixture extends CakeTestFixture {
+class ConsultlocationtypeFixture extends CakeTestFixture {
 
 /**
  * Fields
@@ -30,8 +30,8 @@ class ConsultLocationTypeFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
-			'created' => '2012-09-30 18:38:28',
-			'modified' => '2012-09-30 18:38:28'
+			'created' => '2012-10-04 08:10:39',
+			'modified' => '2012-10-04 08:10:39'
 		),
 	);
 

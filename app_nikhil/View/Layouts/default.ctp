@@ -29,13 +29,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
-		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js');
-		echo $this->Html->script('jquery.valid8');
-		echo $this->Html->script('HealthOS');
-		
 		echo $this->Html->css('cake.generic');
-		echo $this->Html->css('screen');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

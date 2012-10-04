@@ -48,8 +48,8 @@ class ConsultTimingsController extends AppController {
 			}
 		}
 		$consultTypes = $this->ConsultTiming->ConsultType->find('list');
-		$doctorConsultLocations = $this->ConsultTiming->DoctorConsultLocation->find('list');
-		$this->set(compact('consultTypes', 'doctorConsultLocations'));
+		$docconsultlocations = $this->ConsultTiming->Docconsultlocation->find('list');
+		$this->set(compact('consultTypes', 'docconsultlocations'));
 	}
 
 /**
@@ -75,8 +75,8 @@ class ConsultTimingsController extends AppController {
 			$this->request->data = $this->ConsultTiming->read(null, $id);
 		}
 		$consultTypes = $this->ConsultTiming->ConsultType->find('list');
-		$doctorConsultLocations = $this->ConsultTiming->DoctorConsultLocation->find('list');
-		$this->set(compact('consultTypes', 'doctorConsultLocations'));
+		$docconsultlocations = $this->ConsultTiming->Docconsultlocation->find('list');
+		$this->set(compact('consultTypes', 'docconsultlocations'));
 	}
 
 /**

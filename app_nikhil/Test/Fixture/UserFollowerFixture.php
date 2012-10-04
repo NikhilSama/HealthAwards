@@ -34,8 +34,8 @@ class UserFollowerFixture extends CakeTestFixture {
 			'id' => 1,
 			'source_user_id' => 1,
 			'follower_user_id' => 1,
-			'created' => '2012-09-30 18:38:41',
-			'modified' => '2012-09-30 18:38:41'
+			'created' => '2012-10-04 08:10:59',
+			'modified' => '2012-10-04 08:10:59'
 		),
 	);
 

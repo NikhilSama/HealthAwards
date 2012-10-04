@@ -14,7 +14,7 @@ class SpecialtiesControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.specialty',
-		'app.link_doctors_to_specialty',
+		'app.docspeclink',
 		'app.doctor',
 		'app.user',
 		'app.appointment',
@@ -23,20 +23,21 @@ class SpecialtiesControllerTest extends ControllerTestCase {
 		'app.location',
 		'app.country',
 		'app.pin_code',
+		'app.docconsultlocation',
+		'app.consultlocationtype',
+		'app.consult_timing',
+		'app.consult_type',
 		'app.experience',
 		'app.qualification',
 		'app.degree',
-		'app.doctor_consult_location',
-		'app.consult_location_type',
-		'app.consult_timing',
-		'app.consult_type',
 		'app.post_feedback',
 		'app.post',
 		'app.question',
 		'app.question_follower',
-		'app.link_specialties_to_disease',
+		'app.doctor_contact',
+		'app.dslink',
 		'app.disease',
-		'app.specialty_disease_link_type'
+		'app.specialtydiseaselinktype'
 	);
 
 /**

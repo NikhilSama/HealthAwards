@@ -1,5 +1,5 @@
-<div class="consultLocationTypes index">
-	<h2><?php echo __('Consult Location Types'); ?></h2>
+<div class="consultlocationtypes index">
+	<h2><?php echo __('Consultlocationtypes'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -9,16 +9,16 @@
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
-	foreach ($consultLocationTypes as $consultLocationType): ?>
+	foreach ($consultlocationtypes as $consultlocationtype): ?>
 	<tr>
-		<td><?php echo h($consultLocationType['ConsultLocationType']['id']); ?>&nbsp;</td>
-		<td><?php echo h($consultLocationType['ConsultLocationType']['name']); ?>&nbsp;</td>
-		<td><?php echo h($consultLocationType['ConsultLocationType']['created']); ?>&nbsp;</td>
-		<td><?php echo h($consultLocationType['ConsultLocationType']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($consultlocationtype['Consultlocationtype']['id']); ?>&nbsp;</td>
+		<td><?php echo h($consultlocationtype['Consultlocationtype']['name']); ?>&nbsp;</td>
+		<td><?php echo h($consultlocationtype['Consultlocationtype']['created']); ?>&nbsp;</td>
+		<td><?php echo h($consultlocationtype['Consultlocationtype']['modified']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $consultLocationType['ConsultLocationType']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $consultLocationType['ConsultLocationType']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $consultLocationType['ConsultLocationType']['id']), null, __('Are you sure you want to delete # %s?', $consultLocationType['ConsultLocationType']['id'])); ?>
+			<?php echo $this->Html->link(__('View'), array('action' => 'view', $consultlocationtype['Consultlocationtype']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $consultlocationtype['Consultlocationtype']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $consultlocationtype['Consultlocationtype']['id']), null, __('Are you sure you want to delete # %s?', $consultlocationtype['Consultlocationtype']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -41,8 +41,8 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Consult Location Type'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Doctor Consult Locations'), array('controller' => 'doctor_consult_locations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Doctor Consult Location'), array('controller' => 'doctor_consult_locations', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Consultlocationtype'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Docconsultlocations'), array('controller' => 'docconsultlocations', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Docconsultlocation'), array('controller' => 'docconsultlocations', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

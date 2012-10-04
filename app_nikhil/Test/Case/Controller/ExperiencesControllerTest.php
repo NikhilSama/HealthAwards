@@ -22,21 +22,22 @@ class ExperiencesControllerTest extends ControllerTestCase {
 		'app.location',
 		'app.country',
 		'app.pin_code',
-		'app.qualification',
-		'app.degree',
-		'app.doctor_consult_location',
-		'app.consult_location_type',
+		'app.docconsultlocation',
+		'app.consultlocationtype',
 		'app.consult_timing',
 		'app.consult_type',
+		'app.qualification',
+		'app.degree',
 		'app.post_feedback',
 		'app.post',
 		'app.question',
 		'app.question_follower',
-		'app.link_doctors_to_specialty',
+		'app.docspeclink',
 		'app.specialty',
-		'app.link_specialties_to_disease',
+		'app.dslink',
 		'app.disease',
-		'app.specialty_disease_link_type'
+		'app.specialtydiseaselinktype',
+		'app.doctor_contact'
 	);
 
 /**

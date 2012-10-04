@@ -18,17 +18,17 @@ class LocationTest extends CakeTestCase {
 		'app.patient',
 		'app.country',
 		'app.pin_code',
-		'app.experience',
+		'app.docconsultlocation',
 		'app.doctor',
 		'app.user',
-		'app.doctor_consult_location',
-		'app.consult_location_type',
-		'app.consult_timing',
-		'app.consult_type',
+		'app.docspeclink',
+		'app.specialty',
+		'app.doctor_contact',
+		'app.experience',
 		'app.qualification',
-		'app.tors_to_specialty',
-		'app.link_doctors_to_specialty',
-		'app.doctor_consult'
+		'app.consultlocationtype',
+		'app.consult_timing',
+		'app.consult_type'
 	);
 
 /**

@@ -38,8 +38,8 @@ class PostFeedbackFixture extends CakeTestFixture {
 			'user_id' => 1,
 			'like' => 1,
 			'comment' => 'Lorem ipsum dolor sit amet',
-			'created' => '2012-09-30 18:38:36',
-			'modified' => '2012-09-30 18:38:36'
+			'created' => '2012-10-04 08:10:51',
+			'modified' => '2012-10-04 08:10:51'
 		),
 	);
 

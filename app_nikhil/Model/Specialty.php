@@ -3,17 +3,10 @@ App::uses('AppModel', 'Model');
 /**
  * Specialty Model
  *
- * @property LinkDoctorsToSpecialty $LinkDoctorsToSpecialty
- * @property LinkSpecialtiesToDisease $LinkSpecialtiesToDisease
+ * @property Docspeclink $Docspeclink
+ * @property Dslink $Dslink
  */
 class Specialty extends AppModel {
-
-/**
- * Display field
- *
- * @var string
- */
-	public $displayField = 'name';
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -24,8 +17,8 @@ class Specialty extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'LinkDoctorsToSpecialty' => array(
-			'className' => 'LinkDoctorsToSpecialty',
+		'Docspeclink' => array(
+			'className' => 'Docspeclink',
 			'foreignKey' => 'specialty_id',
 			'dependent' => false,
 			'conditions' => '',
@@ -37,8 +30,8 @@ class Specialty extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'LinkSpecialtiesToDisease' => array(
-			'className' => 'LinkSpecialtiesToDisease',
+		'Dslink' => array(
+			'className' => 'Dslink',
 			'foreignKey' => 'specialty_id',
 			'dependent' => false,
 			'conditions' => '',

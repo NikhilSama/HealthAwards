@@ -15,7 +15,7 @@ class ConsultTypeTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.consult_type',
 		'app.consult_timing',
-		'app.doctor_consult_location'
+		'app.docconsultlocation'
 	);
 
 /**

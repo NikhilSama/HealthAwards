@@ -30,8 +30,8 @@ class SpecialtyFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
-			'created' => '2012-09-30 18:38:39',
-			'modified' => '2012-09-30 18:38:39'
+			'created' => '2012-10-04 08:10:55',
+			'modified' => '2012-10-04 08:10:55'
 		),
 	);
 

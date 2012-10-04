@@ -1,0 +1,3 @@
+2012-10-04 08:35:08 Error: [MissingControllerException] Controller class DoclocationsController could not be found.
+#0 /Users/nikhilsama/Dropbox/Code/DocAwards/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

@@ -56,9 +56,9 @@
 			<?php echo $this->Html->link($consultTiming['ConsultType']['name'], array('controller' => 'consult_types', 'action' => 'view', $consultTiming['ConsultType']['it'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Doctor Consult Location'); ?></dt>
+		<dt><?php echo __('Docconsultlocation'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($consultTiming['DoctorConsultLocation']['id'], array('controller' => 'doctor_consult_locations', 'action' => 'view', $consultTiming['DoctorConsultLocation']['id'])); ?>
+			<?php echo $this->Html->link($consultTiming['Docconsultlocation']['id'], array('controller' => 'docconsultlocations', 'action' => 'view', $consultTiming['Docconsultlocation']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Phone'); ?></dt>
@@ -92,7 +92,7 @@
 		<li><?php echo $this->Html->link(__('New Consult Timing'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Consult Types'), array('controller' => 'consult_types', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Consult Type'), array('controller' => 'consult_types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Doctor Consult Locations'), array('controller' => 'doctor_consult_locations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Doctor Consult Location'), array('controller' => 'doctor_consult_locations', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Docconsultlocations'), array('controller' => 'docconsultlocations', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Docconsultlocation'), array('controller' => 'docconsultlocations', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

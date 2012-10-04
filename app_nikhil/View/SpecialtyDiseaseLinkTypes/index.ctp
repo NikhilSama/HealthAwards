@@ -1,5 +1,5 @@
-<div class="specialtyDiseaseLinkTypes index">
-	<h2><?php echo __('Specialty Disease Link Types'); ?></h2>
+<div class="specialtydiseaselinktypes index">
+	<h2><?php echo __('Specialtydiseaselinktypes'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -9,16 +9,16 @@
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
-	foreach ($specialtyDiseaseLinkTypes as $specialtyDiseaseLinkType): ?>
+	foreach ($specialtydiseaselinktypes as $specialtydiseaselinktype): ?>
 	<tr>
-		<td><?php echo h($specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['id']); ?>&nbsp;</td>
-		<td><?php echo h($specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['name']); ?>&nbsp;</td>
-		<td><?php echo h($specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['created']); ?>&nbsp;</td>
-		<td><?php echo h($specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($specialtydiseaselinktype['Specialtydiseaselinktype']['id']); ?>&nbsp;</td>
+		<td><?php echo h($specialtydiseaselinktype['Specialtydiseaselinktype']['name']); ?>&nbsp;</td>
+		<td><?php echo h($specialtydiseaselinktype['Specialtydiseaselinktype']['created']); ?>&nbsp;</td>
+		<td><?php echo h($specialtydiseaselinktype['Specialtydiseaselinktype']['modified']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['id']), null, __('Are you sure you want to delete # %s?', $specialtyDiseaseLinkType['SpecialtyDiseaseLinkType']['id'])); ?>
+			<?php echo $this->Html->link(__('View'), array('action' => 'view', $specialtydiseaselinktype['Specialtydiseaselinktype']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $specialtydiseaselinktype['Specialtydiseaselinktype']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $specialtydiseaselinktype['Specialtydiseaselinktype']['id']), null, __('Are you sure you want to delete # %s?', $specialtydiseaselinktype['Specialtydiseaselinktype']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -41,8 +41,8 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Specialty Disease Link Type'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Link Specialties To Diseases'), array('controller' => 'link_specialties_to_diseases', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Link Specialties To Disease'), array('controller' => 'link_specialties_to_diseases', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Specialtydiseaselinktype'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Dslinks'), array('controller' => 'dslinks', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Dslink'), array('controller' => 'dslinks', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

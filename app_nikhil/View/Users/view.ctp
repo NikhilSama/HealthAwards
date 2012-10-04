@@ -115,8 +115,10 @@
 		<th><?php echo __('First Name'); ?></th>
 		<th><?php echo __('Middle Name'); ?></th>
 		<th><?php echo __('Last Name'); ?></th>
-		<th><?php echo __('Phone'); ?></th>
-		<th><?php echo __('Email'); ?></th>
+		<th><?php echo __('Image'); ?></th>
+		<th><?php echo __('Gender'); ?></th>
+		<th><?php echo __('DOB'); ?></th>
+		<th><?php echo __('First Yr Of Practice'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
@@ -130,8 +132,10 @@
 			<td><?php echo $doctor['first_name']; ?></td>
 			<td><?php echo $doctor['middle_name']; ?></td>
 			<td><?php echo $doctor['last_name']; ?></td>
-			<td><?php echo $doctor['phone']; ?></td>
-			<td><?php echo $doctor['email']; ?></td>
+			<td><?php echo $doctor['image']; ?></td>
+			<td><?php echo $doctor['gender']; ?></td>
+			<td><?php echo $doctor['DOB']; ?></td>
+			<td><?php echo $doctor['first_yr_of_practice']; ?></td>
 			<td><?php echo $doctor['created']; ?></td>
 			<td><?php echo $doctor['modified']; ?></td>
 			<td class="actions">

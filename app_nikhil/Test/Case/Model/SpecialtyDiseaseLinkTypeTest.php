@@ -1,11 +1,11 @@
 <?php
-App::uses('SpecialtyDiseaseLinkType', 'Model');
+App::uses('Specialtydiseaselinktype', 'Model');
 
 /**
- * SpecialtyDiseaseLinkType Test Case
+ * Specialtydiseaselinktype Test Case
  *
  */
-class SpecialtyDiseaseLinkTypeTest extends CakeTestCase {
+class SpecialtydiseaselinktypeTest extends CakeTestCase {
 
 /**
  * Fixtures
@@ -13,14 +13,26 @@ class SpecialtyDiseaseLinkTypeTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.specialty_disease_link_type',
-		'app.link_specialties_to_disease',
+		'app.specialtydiseaselinktype',
+		'app.dslink',
 		'app.specialty',
-		'app.link_doctors_to',
-		'app.link_doctors_to_specialty',
-		'app.ties_to_disease',
-		'app.disease',
-		'app.link_specialties_to'
+		'app.docspeclink',
+		'app.doctor',
+		'app.user',
+		'app.docconsultlocation',
+		'app.location',
+		'app.city',
+		'app.patient',
+		'app.pin_code',
+		'app.country',
+		'app.experience',
+		'app.qualification',
+		'app.degree',
+		'app.consultlocationtype',
+		'app.consult_timing',
+		'app.consult_type',
+		'app.doctor_contact',
+		'app.disease'
 	);
 
 /**
@@ -30,7 +42,7 @@ class SpecialtyDiseaseLinkTypeTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->SpecialtyDiseaseLinkType = ClassRegistry::init('SpecialtyDiseaseLinkType');
+		$this->Specialtydiseaselinktype = ClassRegistry::init('Specialtydiseaselinktype');
 	}
 
 /**
@@ -39,7 +51,7 @@ class SpecialtyDiseaseLinkTypeTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		unset($this->SpecialtyDiseaseLinkType);
+		unset($this->Specialtydiseaselinktype);
 
 		parent::tearDown();
 	}

@@ -14,8 +14,7 @@ class DiseaseTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.disease',
-		'app.link_specialties_to',
-		'app.link_specialties_to_disease'
+		'app.dslink'
 	);
 
 /**
