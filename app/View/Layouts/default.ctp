@@ -36,5 +36,6 @@ ul.left-menu li a { font-size:13px;  color:#fff}
     
   </div>
 	 <?php echo $content_for_layout; ?>
+	 <?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

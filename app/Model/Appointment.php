@@ -5,7 +5,7 @@ class Appointment extends AppModel {
 	function getCalendarByRange($id,$doctorId){
 		$row = array();
 		try{
-			$rows = $this->query("select Appointment.*, Patient.* from appointments Appointment inner join patient_profile Patient on Appointment.patient_id = Patient.user_id where Appointment.id='".$id."' and Appointment.doctor_id='".$doctorId."'");
+			$rows = $this->query("select Appointment.*, Patient.* from appointments Appointment inner join patients Patient on Appointment.patient_id = Patient.user_id where Appointment.id='".$id."' and Appointment.doctor_id='".$doctorId."'");
 			
 			if($rows) {
 				$row = $rows[0];
@@ -78,22 +78,22 @@ class Appointment extends AppModel {
 		$ret['error'] = null;
 		try{			
 			$sql = "select * from `appointments` Appointment
-			inner join patient_profile PP on Appointment.patient_id=PP.user_id
+			inner join patients PP on Appointment.patient_id=PP.user_id
 			where Appointment.doctor_id='".$doctorId."' and `starttime` between '"
 			.$this->php2MySqlTime($sd)."' and '". $this->php2MySqlTime($ed)."'";
 			$handle = $this->query($sql);
 			foreach($handle as $row){
 				$ret['events'][] = array(
 					$row['Appointment']['id'],
-					$row['Appointment']['subject'],
+					$row['PP']['first_name']." ".$row['PP']['last_name'],
 					$this->php2JsTime($this->mySql2PhpTime($row['Appointment']['starttime'])),
 					$this->php2JsTime($this->mySql2PhpTime($row['Appointment']['endtime'])),
 					$row['Appointment']['isalldayevent'],
 					0,
 					0,
-					$row['PP']['name'],
+					$row['PP']['first_name']." ".$row['PP']['last_name'],
 					1,
-					$row['PP']['mobile_primary'], 
+					$row['PP']['phone'], 
 					''
 				);
 			}
@@ -206,3 +206,58 @@ class Appointment extends AppModel {
 	}
 }
 ?>
+
+<?php
+App::uses('AppModel', 'Model');
+/**
+ * Appointment Model
+ *
+ * @property User $User
+ */
+class Appointment1 extends AppModel {
+
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
+		'user_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'is_all_day' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+	);
+
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+}

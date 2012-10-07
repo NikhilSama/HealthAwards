@@ -1,23 +1,119 @@
 <?php
-
+App::uses('AppModel', 'Model');
+/**
+ * Patient Model
+ *
+ * @property User $User
+ * @property City $City
+ * @property PinCode $PinCode
+ * @property Country $Country
+ */
 class Patient extends AppModel {
-   public $useTable="patient_profile";
-   
+
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $recursive=0;
+	public $validate = array(
+		'user_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'city_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'pin_code_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'country_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+	);
+
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'City' => array(
+			'className' => 'City',
+			'foreignKey' => 'city_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'PinCode' => array(
+			'className' => 'PinCode',
+			'foreignKey' => 'pin_code_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Country' => array(
+			'className' => 'Country',
+			'foreignKey' => 'country_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+	
 	function seacrhQuery($doctorId,$words='',$sort=''){
 		$where = 1;
 		$orderby='';
 		if($sort){
 			$orderby ="order by ".$sort;
 		}
-
+		//# and pp.`doctor_id`='".$doctorId."' #AND  pp.`doctor_id`=app.`doctor_id`
 		if($words){
-			$where = "(pp.name LIKE '%".$words."%' OR pp.mobile_primary LIKE '%".$words."%' OR pp.mobile_wife LIKE '%".$words."%' OR pp.mobile_home LIKE '%".$words."%' OR pp.email_primary LIKE '%".$words."%' OR pp.email_wife LIKE '%".$words."%' OR pp.address_home LIKE '%".$words."%' OR pp.city_home LIKE '%".$words."%' OR pp.pin_home LIKE '%".$words."%' OR pp.address_work LIKE '%".$words."%' OR pp.city_work LIKE '%".$words."%' OR pp.pin_work LIKE '%".$words."%')";
+			$where = "(pp.first_name LIKE '%".$words."%' OR pp.last_name LIKE '%".$words."%' OR pp.phone LIKE '%".$words."%'  OR pp.email LIKE '%".$words."%'  OR pp.address LIKE '%".$words."%' OR City.name LIKE '%".$words."%' OR PinCode.pin_code LIKE '%".$words."%' )";
 		}
-		$sql = "SELECT max(app.created) as lastAppointments, sum(if(app.`patient_id` is null,0,1)) as noOfAppointments,pp.email_primary, pp.name, pp.`pin_work`, pp.`mobile_primary`,pp.photo
-		FROM  `patient_profile` pp 
-		Left JOIN `appointments` app  ON app.`patient_id`=pp.`user_id` AND  pp.`doctor_id`=app.`doctor_id`
+		$sql = "SELECT max(app.created) as lastAppointments, sum(if(app.`patient_id` is null,0,1)) as noOfAppointments,pp.email,pp.phone, pp.first_name, pp.last_name,pp.image,pp.`user_id`
+		FROM  `patients` pp 
+		Left join cities City on pp.city_id=City.id
+		Left join pin_codes PinCode on PinCode.id=pp.pin_code_id
+		Left JOIN `appointments` app  ON app.`patient_id`=pp.`user_id` 
 		WHERE ".$where."
-		 and pp.`doctor_id`='".$doctorId."'
+		
 		GROUP BY pp.`user_id` ".$orderby;
 		
 		return $sql;
@@ -25,68 +121,68 @@ class Patient extends AppModel {
 	public function searchPatients($doctorId,$words){
 		$where = 1;
 		$patients = array();
-		$orderby='order by pp.name';
+		$orderby='order by pp.first_name,pp.last_name';
+		// #and pp.`doctor_id`='".$doctorId."'
 		if($words){
-			$where = "(pp.name LIKE '%".$words."%' OR pp.mobile_primary LIKE '%".$words."%' OR pp.mobile_wife LIKE '%".$words."%' OR pp.mobile_home LIKE '%".$words."%' OR pp.email_primary LIKE '%".$words."%' OR pp.email_wife LIKE '%".$words."%' OR pp.address_home LIKE '%".$words."%' OR pp.city_home LIKE '%".$words."%' OR pp.pin_home LIKE '%".$words."%' OR pp.address_work LIKE '%".$words."%' OR pp.city_work LIKE '%".$words."%' OR pp.pin_work LIKE '%".$words."%')";
+			$where = "(pp.first_name LIKE '%".$words."%' OR pp.last_name LIKE '%".$words."%' OR pp.phone LIKE '%".$words."%'  OR pp.email LIKE '%".$words."%'  OR pp.address LIKE '%".$words."%' OR City.name LIKE '%".$words."%' OR PinCode.pin_code LIKE '%".$words."%')";
 		}
-		$sql = "SELECT pp.user_id,
-		
-		pp.email_primary, pp.name, pp.`pin_work`, pp.`mobile_primary`,pp.photo
-		FROM  `patient_profile` pp 
-		
+		$sql = "SELECT pp.user_id,pp.email, pp.first_name, pp.last_name, PinCode.pin_code, pp.`phone`,pp.image
+		FROM  `patients` pp 
+		Left join cities City on pp.city_id=City.id	
+		Left join pin_codes PinCode on PinCode.id=pp.pin_code_id		
 		WHERE ".$where."
-		 and pp.`doctor_id`='".$doctorId."'
+		
 		
 		".$orderby." limit 20";
 		$result = $this->query($sql);
 		foreach($result as $val){
-			$patients[]=array('id'=>$val['pp']['user_id'],'label'=>$val['pp']['name'],'email'=>$val['pp']['email_primary'],'mobile'=>$val['pp']['mobile_primary']);
+			$patients[]=array('id'=>$val['pp']['user_id'],'label'=>$val['pp']['first_name'].' '.$val['pp']['first_name'],'email'=>$val['pp']['email'],'mobile'=>$val['pp']['phone']);
 		}
 		
 		return $patients;
 	}
-	public function getPatientInfo($doctorId,$patientId){
-		return $this->find('first',array('conditions'=>array('doctor_id'=>$doctorId,'user_id'=>$patientId),'fields'=>array()));
+	public function getPatientInfo($doctorId,$patientId){//'doctor_id'=>$doctorId,
+		
+		return $this->find('first',array('conditions'=>array('user_id'=>$patientId),'fields'=>array()));
 	}
-	public function updatePatientInfo($doctorId,$patientId,$fieldName,$value){
-		$this->updateAll(array($fieldName=>"'".$value."'"),array('user_id'=>$patientId,'doctor_id'=>$doctorId));
+	public function updatePatientInfo($doctorId,$patientId,$fieldName,$value){//,'doctor_id'=>$doctorId
+		if(!$this->PatientValidation(array($fieldName=>$value))){
+			$this->unbindModel( array('belongsTo' => array('User','City','PinCode','Country')) );
+			
+			if($fieldName == 'fullname') {
+					$tmp = explode(" ",$value,2);
+					$data['Patient']['first_name'] = $tmp[0];
+					$data['Patient']['last_name'] = $tmp[1];
+					$this->updateAll(array('first_name'=>"'".$tmp[0]."'",'last_name'=>"'".$tmp[1]."'"),array('user_id'=>$patientId));
+			}else{
+				$this->updateAll(array($fieldName=>"'".$value."'"),array('user_id'=>$patientId));
+			}
+		}
 		return ;
 	}
 	function PatientValidation($data,$flag=null) {
 		
 		// Name field is blank
-        if(isset($data['name']) && $data['name'] == '') {
-			$this->invalidate('name');
-			$errors['name'] = 'Please enter the name';
-		}elseif(isset($data['name']) && preg_match('/[^a-z \.]/i',$data['name'])) {
-			$this->invalidate('name');
-			$errors['name']= 'Name should contain a-z characters';
+        if(isset($data['fullname']) && $data['fullname'] == '') {
+			$this->invalidate('fullname');
+			$errors['fullname'] = 'Please enter the name';
+		}elseif(isset($data['fullname']) && preg_match('/[^a-z \.]/i',$data['fullname'])) {
+			$this->invalidate('fullname');
+			$errors['fullname']= 'Name should contain a-z characters';
 		}
 		
 		// validate mobile number
 		
-		if(isset($data['mobile_primary']) && $data['mobile_primary'] != '' && (!preg_match(HEALTHOS_VALID_MOBILENUMBER,$data['mobile_primary']) || !$this->validMobileNumber($data['mobile_primary']))) {
-			$this->invalidate('mobile_primary');
-			$errors['mobile_primary'] = 'Invalid primary mobile  number';
+		if(isset($data['phone']) && $data['phone'] != '' && (!preg_match(HEALTHOS_VALID_MOBILENUMBER,$data['phone']) || !$this->validMobileNumber($data['phone']))) {
+			$this->invalidate('phone');
+			$errors['phone'] = 'Invalid primary mobile  number';
 		}
 		
-		if(isset($data['mobile_wife']) && $data['mobile_wife'] != '' && (!preg_match(HEALTHOS_VALID_MOBILENUMBER,$data['mobile_wife']) || !$this->validMobileNumber($data['mobile_wife']))) {
-			$this->invalidate('mobile_wife');
-			$errors['mobile_wife'] = 'Invalid wife mobile  number';
+		if(isset($data['pin_code_id']) && $data['pin_code_id'] != '' && (!preg_match(HEALTHOS_VALID_PIN,$data['pin_code_id']) )) {
+			$this->invalidate('pin_code_id');
+			$errors['pin_code_id'] = 'Invalid  home pin';
 		}
-        if(isset($data['mobile_home']) && $data['mobile_home'] != '' && (!preg_match(HEALTHOS_VALID_MOBILENUMBER,$data['mobile_home']) || !$this->validMobileNumber($data['mobile_home']))) {
-			$this->invalidate('mobile_home');
-			$errors['mobile_home'] = 'Invalid home mobile  number';
-		}
-		
-		if(isset($data['pin_home']) && $data['pin_home'] != '' && (!preg_match(HEALTHOS_VALID_PIN,$data['pin_home']) )) {
-			$this->invalidate('pin_home');
-			$errors['pin_home'] = 'Invalid  home pin';
-		}
-        if(isset($data['pin_work']) && $data['pin_work'] != '' && (!preg_match(HEALTHOS_VALID_PIN,$data['pin_work']) )) {
-			$this->invalidate('pin_work');
-			$errors['pin_work'] = 'Invalid work pin';
-		}
+       
         if(isset($errors))
 			return $errors;
 	}
@@ -108,7 +204,7 @@ class Patient extends AppModel {
 		}
 		return true;
 	}
-	function addPatient($data) {
+	function addPatient($data) { //pr($data); die;
         $errors = array();
         $userid = 0;
 		
@@ -129,7 +225,15 @@ class Patient extends AppModel {
             if ($user->save($data['User'])) {
                 $userid = $user->getLastInsertId();
                 $errors['userid'] = $userid;
-		       
+				if(!$data['Patient']['city_id']){$data['Patient']['city_id']=1;}
+				if(!$data['Patient']['pin_code_id']){$data['Patient']['pin_code_id']=1;}
+				if(!$data['Patient']['country_id']){$data['Patient']['country_id']=1;}
+				
+				if(isset($data['Patient']['fullname']) && $data['Patient']['fullname'] != '') {
+					$tmp = explode(" ",$data['Patient']['fullname'],2);
+					$data['Patient']['first_name'] = $tmp[0];
+					$data['Patient']['last_name'] = $tmp[1];
+				}
                 $data['Patient']['user_id'] = $userid;
                 if ($this->save($data)) {
                     $user->commit(); // Persist the data
@@ -149,4 +253,3 @@ class Patient extends AppModel {
         }
     }
 }
-?>

@@ -24,7 +24,7 @@ class UsersController extends AppController {
 
 	public function login($controller=null,$action=null) {
 		if($this->Session->check('User')){
-			$this->redirect('/users/index');
+			$this->redirect('/doctors/my_profile');
 			exit();
 		}
 		if (!empty($this->request->data)) { 

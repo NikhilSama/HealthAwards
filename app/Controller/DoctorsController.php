@@ -8,16 +8,17 @@ class DoctorsController extends AppController {
  *
  * @var array
  */
-	public $uses = array('Appointment','Patient','Doctor','DoctorContact','DoctorAddress');
+	public $uses = array('Appointment','Patient','Doctor','DoctorConsultLocation','Qualification','LinkDoctorsToSpecialty','City','Country','PinCode');
 	
 	public function my_profile(){
 		$user = $this->_checkDoctorSession();
 		$doctorId=$user['id'];
-		//$doctorId=1;
-		$address = $this->DoctorAddress->getDoctorAddresses($doctorId);
-		$contacts=$this->DoctorContact->getDoctorContacts($doctorId);
+		$address = $this->DoctorConsultLocation->getDoctorConsultLocation($doctorId);
+		$qualifications=$this->Qualification->getDoctorQualification($doctorId);
+		$specialties=$this->LinkDoctorsToSpecialty->getDoctorSpecialty($doctorId);
 		$this->set('address',$address);
-		$this->set('contacts',$contacts);
+		$this->set('qualifications',$qualifications);
+		$this->set('specialties',$specialties);
 		$this->set('user',$user);
 	}
 	public function update_contact(){
@@ -65,17 +66,16 @@ class DoctorsController extends AppController {
 		$result = $this->Upload->upload($file, $destination, null, array('type' => 'resizecrop', 'size' => array('200', '150'), 'output' => 'jpg'),array('jpg','jpeg','gif','JPG','JPEG'));
 
 		if ($this->Upload->result){
-		
-			$this->Doctor->updateProfile($doctorId,'photo',trim($this->Upload->result));
-			//if($this->Session->check('User.userInfo.photo')){
-				$this->Session->write('User.userInfo.photo', trim($this->Upload->result));
-			//}
-			$info['Patient']['photo'] = $this->Upload->result;
+			
+			$this->Doctor->updateProfile($doctorId,'image',trim($this->Upload->result));
+			
+			$this->Session->write('User.userInfo.image', trim($this->Upload->result));
+			
 			echo "/img/doctors_pics/".$this->Upload->result;
 		} else {
 			// display error
 			$errors = $this->Upload->errors;
-			pr($errors);
+			echo "/img/doctors_pics/".$this->Session->read('User.userInfo.image');
 		}
 		die;
 	}
@@ -95,7 +95,8 @@ class DoctorsController extends AppController {
 	}
 	
 	function calendar(){
-	
+	$user = $this->_checkDoctorSession();
+		$doctorId=$user['id'];
 	}
 	function edit_calendar($id=null){
 		$this->layout=null;
@@ -146,8 +147,9 @@ class DoctorsController extends AppController {
 				$appointmentDetails['starttime'] = $st;
 				$appointmentDetails['endtime'] = $et;
 				$appointmentDetails['isalldayevent'] = isset($_POST["isalldayevent"])?1:0;
+				//pr($appointmentDetails);die;
 				if(isset($_GET["id"])){
-					$appointmentDetails['patient_id'] = $_GET["id"];
+					//$appointmentDetails['patient_id'] = $_GET["id"];
 					$ret = $this->Appointment->updateDetailedCalendar($doctorId,$_GET["id"], $appointmentDetails);
 				}else{
 					$ret = $this->Appointment->addDetailedCalendar($doctorId,$appointmentDetails);
@@ -160,7 +162,7 @@ class DoctorsController extends AppController {
 	}
 	function patients_list(){
 		$sortTypeArr=array(1=>array('sName'=>'ASC','dName'=>'Acending'),2=>array('sName'=>'DESC','dName'=>'Decending'));
-		$sortByArr=array(1=>array('cName'=>'pp.name','dName'=>'Name'),2=>array('cName'=>'lastAppointments','dName'=>'Last Visit'),3=>array('cName'=>'pp.created','dName'=>'Last Added'));
+		$sortByArr=array(1=>array('cName'=>'pp.first_name','dName'=>'Name'),2=>array('cName'=>'lastAppointments','dName'=>'Last Visit'),3=>array('cName'=>'pp.created','dName'=>'Last Added'));
 		
 		$user = $this->_checkDoctorSession();
 		$doctorId=$user['id'];
@@ -212,19 +214,31 @@ class DoctorsController extends AppController {
 			$destination = realpath('../../app/webroot/img/patient_pics/') . '/';
 
 			// grab the file
-			$file = $info['Patient']['photo'];
+			$file = $info['Patient']['image'];
+			
 			// upload the image using the upload component
 			$result = $this->Upload->upload($file, $destination, null, array('type' => 'resizecrop', 'size' => array('50', '50'), 'output' => 'jpg'),array('jpg','jpeg','gif','JPG','JPEG'));
-			//pr($this->Upload->result);
-			//pr($result);die;
+			
+			unset($info['Patient']['image']);
 			if ($this->Upload->result){
-				$info['Patient']['photo'] = $this->Upload->result;
-			} else {
+				$info['Patient']['image'] = $this->Upload->result;
+			} else if(isset($file['name']) && $file['name']) {
 				// display error
 				$errors = $this->Upload->errors;
 			}
+			
 			if(!isset($errors)){
 			$info['Patient']['doctor_id']=$doctorId;
+			if(!$info['Patient']['city_id'] && $info['Patient']['city']){
+				$info['Patient']['city_id']=$this->City->getCityId(trim($info['Patient']['city']));
+			}
+			if(!$info['Patient']['pin_code_id'] && $info['Patient']['pin_code']){
+				$info['Patient']['pin_code_id']=$this->PinCode->getPinCodeId(trim($info['Patient']['pin_code']));
+			}
+			if(!$info['Patient']['country_id'] && $info['Patient']['country']){
+				$info['Patient']['country_id']=$this->Country->getCountryId(trim($info['Patient']['country']));
+			}
+			
 			$userids = $this->Patient->addPatient($info);
             $userid = $userids['userid'];
             if ($userid != 0) {
@@ -244,18 +258,22 @@ class DoctorsController extends AppController {
                     $this->sendEmail($this->data['User']['email'], $data['data']['subject'], $template , $data['data']);
                                         
                     */
-                    $redirectUrl = '/doctors/patients_list/';
+					if ($this->RequestHandler->isAjax()) { 
+					echo json_encode(array('IsSuccess'=>true)); die;
+					}die;
+					$redirectUrl = '/doctors/patients_list/';
                     $this->Session->setFlash('', 'flash', array('Patient add succesfully'), 'flash');
                     
                     $this->redirect($redirectUrl);
                     exit();
                 } else {
-                    $this->request->data['User']['password'] = $password;
+                    //$this->request->data['User']['password'] = $password;
                 }
             } else {
                 $this->set('errors', $userids);
 				unset($userids['userid']);
-				$this->Session->setFlash('', 'flash', $userids, 'flash');
+				echo json_encode(array('error'=>$userids)); die;
+				//$this->Session->setFlash('', 'flash', $userids, 'flash');
             }
 			}else{
 			$this->Session->setFlash('', 'flash', $errors, 'flash');
@@ -266,16 +284,41 @@ class DoctorsController extends AppController {
 	public function update_patient_info(){
 		$user = $this->_checkDoctorSession();
 		$doctorId=$user['id'];
-		if($this->Patient->hasField($this->data['field_name'])){
+		if($this->Patient->hasField($this->data['field_name']) || $this->data['field_name']=='fullname'){
 			$this->Patient->updatePatientInfo($doctorId,$this->data['patient_id'],$this->data['field_name'],trim($this->data['value']));
 			echo ($this->data['value']);die;
 		}
 	}
+	function update_patient_photo($patient_id){
+		$user = $this->_checkDoctorSession();
+		$doctorId=$user['id'];
+		$destination = realpath('../../app/webroot/img/patient_pics/') . '/';
+		$patientInfo = $this->Patient->getPatientInfo($doctorId,$patient_id);
+			
+		$file = $_FILES['myfile'];
+		// upload the image using the upload component
+		$result = $this->Upload->upload($file, $destination, null, array('type' => 'resizecrop', 'size' => array('50', '50'), 'output' => 'jpg'),array('jpg','jpeg','gif','JPG','JPEG'));
+
+		if ($this->Upload->result){
+			$this->Patient->updatePatientInfo($doctorId,$patient_id,'image',trim($this->Upload->result));
+			
+			echo "/img/patient_pics/".$this->Upload->result;
+		} else {
+			// display error
+			$errors = $this->Upload->errors;
+			echo "/img/patient_pics/".$patientInfo['Patient']['image'];
+			//pr($errors);
+		}
+		die;
+	}
+	
 	public function patient_search_json(){
 		$user = $this->_checkDoctorSession();
 		$doctorId=$user['id'];
 		$patients = $this->Patient->searchPatients($doctorId,$_GET['term']);
 		echo $this->array2json($patients);
 		die;
+	}
+	public function test(){
 	}
 }

@@ -27,8 +27,6 @@
 	</style>
 	<script>
 	$(function() {
-		
-
 		$( "#patient_input" ).autocomplete({
 			source: "/doctors/patient_search_json",
 			minLength: 2,
@@ -275,11 +273,11 @@
 				<input type="hidden"  value="<?php echo isset($event)?$event['Appointment']['patient_id']:"" ?>" id="patient_id_hidden" name="patient_id">
 				<div id="patient_info_box" style="display:<?php echo isset($event)?"block":"none" ?>;">
 					<div id="patient_info_box_inner">
-						<?php echo isset($event)?$event['Patient']['name']:"" ?>
+						<?php echo isset($event)?$event['Patient']['first_name']." ".$event['Patient']['last_name']:"" ?>
 						</BR>
-						<?php echo isset($event)?$event['Patient']['email_primary']:"" ?>
+						<?php echo isset($event)?$event['Patient']['email']:"" ?>
 						</BR>
-						<?php echo isset($event)?$event['Patient']['mobile_primary']:"" ?>
+						<?php echo isset($event)?$event['Patient']['phone']:"" ?>
 					</div>
 					<a href="#" onclick="change_patient()">Change</a>
 				</div>	

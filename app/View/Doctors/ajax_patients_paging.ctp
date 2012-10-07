@@ -3,15 +3,15 @@
 		//	pr($patient);
 ?>
 	<div class="patient-box">
-			<?php if($patient['pp']['photo']){ ?>
-				<span class="user-image" src="<?php echo $patient['pp']['photo']; ?>"></span>
-				<!--<img src="/img/patient_pics/<?php echo $patient['pp']['photo']; ?>">-->
+			<?php if($patient['pp']['image']){ ?>
+				<span class="user-image" src="<?php echo $patient['pp']['image']; ?>"></span>
+				<!--<img src="/img/patient_pics/<?php echo $patient['pp']['image']; ?>">-->
 			<?php }else{ ?>
 				<img src="/img/picture.jpg">
 			<?php } ?>
 		<div class="detail">
-			<h3><?php echo $patient['pp']['name'] ?></h3>
-			<?php echo $patient['pp']['email_primary'] ?><br>
+			<h3 onclick="editPatient(<?php echo $patient['pp']['user_id']; ?>)"><?php echo $patient['pp']['first_name'] ?> <?php echo $patient['pp']['last_name'] ?></h3>
+			<?php echo $patient['pp']['email'] ?><br>
 			<?php echo $patient['0']['noOfAppointments'] ?> Appointments
 		</div>
 		<div class="clear"></div>

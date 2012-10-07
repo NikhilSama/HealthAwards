@@ -1,9 +1,30 @@
 $(document).ready(function() {
+/*$.validator.addMethod("email", function(value, element)
+{
+	return this.optional(element) || /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/i.test(value);
+}, "Please enter a valid email address.");
+
+$.validator.addMethod("username",function(value,element)
+{
+	return this.optional(element) || /^[a-zA-Z0-9._-]{3,16}$/i.test(value);
+},"Username are 3-15 characters");
+
+$.validator.addMethod("password",function(value,element)
+{
+	return this.optional(element) || /^[A-Za-z0-9!@#$%^&*()_]{6,16}$/i.test(value);
+},"Passwords are 6-16 characters");
+*/
+
 
 $.validator.addMethod("mobile",function(value,element)
 {
 	return this.optional(element) || /^(\+91-|\+91|0)?\d{10}$/.test(value);
 },"Mobile should be +912230333333");
+$.validator.addMethod("pin", function(value, element)
+{
+	return this.optional(element) || /^[0-9]{6,10}$/i.test(value);
+}, "Please enter a valid pin code.");
+
 });
 function changeCity(stateId,divID){
 	

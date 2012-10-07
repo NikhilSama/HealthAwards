@@ -1,13 +1,28 @@
 <?php
 class UtilController extends AppController {
-	public $uses = array('User', 'Paging',  'UserDetail', 'Order','Country','State','City');
-	public $helpers = array('Html','Form','Ajax','Javascript','SpecialCharacter','Util','Time');
-	public $components = array('Encrypt','Cookie','Session','Email','Graph','RequestHandler');
+	public $uses = array('User', 'Paging','Country','PinCode','City');
+	public $helpers = array('Html','Form','Ajax','Javascript','Util');
+	public $components = array('Encrypt','Cookie','Session','Email','RequestHandler');
 	
 	public function beforeFilter() {
 		parent::beforeFilter();		
 	}
-	public function gat_state_list($country,$divId){
+	function city_search_json(){
+		$cities = $this->City->searchCity($_GET['term']);
+		echo $this->array2json($cities);
+		die;
+	}
+	function country_search_json(){
+		$countries = $this->Country->searchCountry($_GET['term']);
+		echo $this->array2json($countries);
+		die;
+	}
+	function pincode_search_json(){
+		$pincodes = $this->PinCode->searchPinCode($_GET['term']);
+		echo $this->array2json($pincodes);
+		die;
+	}
+	/*public function gat_state_list($country,$divId){
 		$statesList = $this->State->getStatesList($country);
 		$statesList = array('0'=>'Select State') + $statesList;
 		echo "<select name='data[UserDetail][city]' id='UserDetailCity' onchange='changeCity(this.value,\"".$divId."\")'>";
@@ -41,32 +56,15 @@ class UtilController extends AppController {
         }
 		echo 'success';
         exit();
-	}
+	}*/
 	
 	public function getUserImage($src=''){
-	$src = "../webroot/img/patient_pics/".$_POST['src'];
-	$con=file_get_contents($src);
-	$en=base64_encode($con);
-	$mime='image/gif';
-	echo $binary_data='data:' . $mime . ';base64,' . $en ;
-	die;
-	//$src='Desert0.jpg';
-	$src = "../webroot/img/patient_pics/".$src;
-			$targ_w = $targ_h = 55;
-			$jpeg_quality = 90;
-					
-	list($width, $height) = getimagesize($src);
-    $img_r = imagecreatefromjpeg($src);
-    $dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
-
-    imagecopyresampled($dst_r,$img_r,0,0,0,0,$targ_w,$targ_h,$width, $height);
-
-    // header('Content-type: image/jpeg');
-
-     imagejpeg($dst_r,null,$jpeg_quality);
-
-    exit;
-	
+		$src = "../webroot/img/patient_pics/".$_POST['src'];
+		$con=file_get_contents($src);
+		$en=base64_encode($con);
+		$mime='image/gif';
+		echo $binary_data='data:' . $mime . ';base64,' . $en ;
+		die;
 	}
 }
 ?>

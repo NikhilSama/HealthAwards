@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Add Patient</title>
-
-<!--<link rel="stylesheet" type="text/css" media="screen" href="/css/validate/screen.css" />-->
 <link rel="stylesheet" type="text/css" media="screen" href="/css/chosen/chosen.css" />
-
-<script src="/js/jquery-1.8.0.min.js" type="text/javascript"></script>    
 <script src="/js/chosen/chosen.jquery.js" type="text/javascript"></script>
 <script src="/js/ajaxupload.js" type="text/javascript"></script>
 <script src="/js/jquery.jeditable.js" type="text/javascript"></script>
-<!--<script src="/js/calender/jquery.metadata.js" type="text/javascript"></script>        -->
-<!--<script src="/js/calender/jquery.form.js" type="text/javascript"></script>-->     
-<script src="/js/calender/jquery.validate.js" type="text/javascript"></script>
-<!--<script type="text/javascript" src="/js/jquery.timers.js"></script>-->
-<!--<script type="text/javascript" src="/js/mbTooltip.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/mbTooltip.css" title="style1"  media="screen">
--->
 <script>
 function makeEditable(){
 	$('.edit_name').editable('/doctors/update_profile', {
@@ -119,7 +103,7 @@ function makeEditable(){
 
 $(document).ready(function() {
 
-		makeEditable();
+		//makeEditable();
  });
 </script>
 <script type="text/javascript">
@@ -187,8 +171,6 @@ $(window).load(function(){
 	}
 </style>
 
-</head>
-<body>
 
 <!-- // Container -->
 	
@@ -204,10 +186,10 @@ $(window).load(function(){
 			<img src="/img/spinner_large.gif" border="0">
 		</div>
 		<!-- // Profile picture -->
-			<?php if(!$user['userInfo']['photo']){ ?>
+			<?php if(!$user['userInfo']['image']){ ?>
 			<img class="float-l mr-10" src="/img/picture1.jpg" id="profile_img">
 			<?php }else{ ?>
-			<img class="float-l mr-10" src="/img/doctors_pics/<?php echo $user['userInfo']['photo']; ?>" id="profile_img">
+			<img class="float-l mr-10" src="/img/doctors_pics/<?php echo $user['userInfo']['image']; ?>" id="profile_img">
 			<?php } ?>
 
 	</div>
@@ -215,16 +197,30 @@ $(window).load(function(){
 			<a class="link edit" href="#" id='change_button'>Change</a>
 		</div>
 		<div class="top">
-			<h3 class="ml-10"><div class="edit_name" id="name"><?php echo $user['userInfo']['name'];?> </div></h3>
+			<h3 class="ml-10"><div class="edit_name" id="name"><?php echo $user['userInfo']['first_name']; if($user['userInfo']['middle_name']){echo "  ".$user['userInfo']['middle_name'];} if($user['userInfo']['last_name']){echo " ".$user['userInfo']['last_name'];}?></div></h3>
 			<div class="section">
 				<table width="100%" cellpadding="5">
 					<tr>
 						<td width="33%" valign="top"><span class="text14"><b>Specialization:</b></span></td>
-						<td valign="top">Pulmonology, Internal Medicine</td>
+						<td valign="top">
+						<?php 
+						$tmp=array();
+						foreach($specialties as $val){
+						$tmp[]=$val['Specialty']['name'];
+						}
+						echo implode(', ',$tmp);
+						?>
+						</td>
 					</tr>
 					<tr>
 						<td valign="top"><span class="text14"><b>Education & Training:</b></span></td>
-						<td valign="top"><div class="edit_area" id="education"><?php echo $user['userInfo']['education'];?></div></td>
+						<td valign="top"><div class="edit_area" id="education"><?php 
+						$tmp=array();
+						foreach($qualifications as $val){
+						$tmp[]=$val['Degree']['name'];
+						}
+						echo implode(', ',$tmp);
+						?></div></td>
 					</tr>
 				</table>
 			</div>
@@ -244,17 +240,21 @@ $(window).load(function(){
 	<div class="doctor-contact mt-40">
 		<h3>Contact:</h3>
 		<div id="contactBox">
-		<?php foreach($contacts as $val){ ?>
-			<div id="contact<?php echo $val['DoctorContact']['id'];?>">
-				<div class="type"><div class="edit_contact_type" id="contact_type-<?php echo $val['DoctorContact']['id'];?>"><?php echo $val['DoctorContact']['contact_type'];?></div></div>
-				<div class="phone"><div class="edit_mobile" id="mobile-<?php echo $val['DoctorContact']['id'];?>"><?php echo $val['DoctorContact']['mobile'];?></div></div>
-				<div class="mail"><div class="edit_email" id="email-<?php echo $val['DoctorContact']['id'];?>"><?php echo $val['DoctorContact']['email'];?></div></div>
-				<img class="float-l" src="/img/cross-mark.gif" onclick="delete_contact(<?php echo $val['DoctorContact']['id'];?>)">
+		<?php
+				foreach($address as $tmp){
+					$flag=1;
+					foreach($tmp['ConsultTiming'] as $val){
+				?>
+			<div id="contact<?php echo $val['id'];?>">
+				<div class="type"><div class="edit_contact_type" id="contact_type-<?php echo $val['id'];?>"><?php echo $tmp['ConsultLocationType']['name'];?></div></div>
+				<div class="phone"><div class="edit_mobile" id="phone-<?php echo $val['id'];?>"><?php echo $val['phone'];?></div></div>
+				<div class="mail"><div class="edit_email" id="email-<?php echo $val['id'];?>"><?php echo $val['email'];?></div></div>
+				<!--<img class="float-l" src="/img/cross-mark.gif" onclick="delete_contact(<?php echo $val['id'];?>)">-->
 				<div class="clear"></div><br>
 			</div>
-		<?php } ?>
+		<?php }} ?>
 		</div>
-		<a class="edit" href="javascript:void(0);" onclick="add_contact()">add new</a>
+		<!--<a class="edit" href="javascript:void(0);" onclick="add_contact()">add new</a>-->
 	</div>
 	
 	<div class="doctor-location mt-50">
@@ -264,18 +264,26 @@ $(window).load(function(){
 				<?php
 				foreach($address as $val){
 					$flag=1;
-					foreach($val['DoctorTiming'] as $val1){
+					foreach($val['ConsultTiming'] as $val1){
 				?>
 					<tr>
 						<td width="25%" align="center" valign="middle">
-						<?php 
-						echo $this->Util->daysNameList($val1['days']);
+						<?php
+						$days=array();						
+						if($val1['monday']){ $days[] = 'Monday'; }
+						if($val1['tuesday']){ $days[] = 'Tuesday'; }
+						if($val1['wednesday']){ $days[] = 'Wednesday'; }
+						if($val1['thursday']){ $days[] = 'Thursday'; }
+						if($val1['friday']){ $days[] = 'Friday'; }
+						if($val1['saturday']){ $days[] = 'Saturday'; }
+						if($val1['sunday']){ $days[] = 'Sunday'; }
+						echo implode(', ',$days);
 						?>
 						</td>
-						<td width="25%" align="center" valign="middle"><?php echo $val1['time_form']; ?>-<?php echo $val1['time_to']; ?></td>
-						<td width="25%" align="center" valign="middle"><?php echo $val1['details']; ?></td>
+						<td width="25%" align="center" valign="middle"><?php echo $val1['start']; ?>-<?php echo $val1['end']; ?></td>
+						<td width="25%" align="center" valign="middle"><?php echo $val1['ConsultType']['name']; ?></td>
 						<?php if($flag){ ?>
-						<td  width="25%" align="center" valign="middle" rowspan="<?php echo count($val['DoctorTiming']); ?>" valign="center"><?php echo $val['DoctorAddress']['address']; ?> <?php echo $val['DoctorAddress']['city']; ?> <?php echo $val['DoctorAddress']['pin']; ?></td>
+						<td  width="25%" align="center" valign="middle" rowspan="<?php echo count($val['ConsultTiming']); ?>" valign="center"><?php echo $val['Location']['address']; ?> <?php echo $val['Location']['City']['name']; ?> <?php echo $val['Location']['City']['state']; ?> <?php echo $val['Location']['PinCode']['pin_code']; ?> <?php echo $val['Location']['Country']['name']; ?></td>
 						<?php } ?>
 					</tr>
 					
@@ -290,6 +298,7 @@ $(window).load(function(){
 			</div>
 			
 		
+<?php  echo $this->Html->link('Change','manage_timings',array('class'=>'edit'));?>
 		</div>
 		
 		<div class="float-r">
@@ -359,5 +368,3 @@ function delete_contact(id){
 $(".chzn-select").chosen(); 
 $(".chzn-select-deselect").chosen({allow_single_deselect:true}); 
 </script>
-</body>
-</html>
